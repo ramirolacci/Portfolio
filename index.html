@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramiro Lacci Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="#">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="header">
+        <a href="#home" class="logo">Ramiro
+            <span>Lacci</span></a>
+            <div class="nav-container">
+                <i class='bx bx-menu' id="menu-icon"></i>
+                <nav class="navbar">
+                    <a id="home-heading" href="#home" class="active">Home</a>
+                    <a id="education-heading" href="#education">Skills</a>
+                    <a id="services-heading" href="#services">Services</a>
+                    <a id="projects-heading" href="#projects">Projects</a>
+                    <a id="contact-heading" href="#contact">Contact</a>
+                </nav>
+                <div class="flags-container">
+                    <div class="flags">
+                        <div class="flags__item" data-lang="en">
+                            <img src="Flags/us.svg" alt="English flag">
+                        </div>
+                    </div>
+                    <div class="flags">
+                        <div class="flags__item" data-lang="es">
+                            <img src="Flags/ar.svg" alt="Spanish flag">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </header>
+    <section class="home" id="home">
+        <div class="home-content reveal reveal-down">
+            <h1><span id="greeting" style="color: white;">Hi, It's</span><span> Ramiro</span></h1>
+            <h3><span id="subheading" style="color: white;">I'm a</span><span class="text-animation"> </span></h3>
+            <p id="about-me">
+                I consider myself a proactive person, who is always looking for continuous improvement, I consider 
+                myself a good partner who helps in case a colleague needs it, I am not afraid to consult in case of 
+                doubts.
+                For my next job I would like a company with new challenges, which allows me to grow and in which I 
+                can show how much I can bring to the company!
+            </p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/ramiro-lacci-20386026a/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://github.com/ramirolacci" target="_blank"><i class='bx bxl-github'></i></a>
+                <a href="https://wa.link/a1bh6y" target="_blank"><i class='bx bxl-whatsapp' ></i></a>
+            </div>
+            <div class="btn-group">
+                <a id="hire-btn" href="mailto:ramiroalejandolacci19@gmail.com" target="_blank" class="btn">Hire</a>
+                <a id="download-cv-btn" download="Cv Ramiro Lacci" href="CV pdf/Cv Ramiro Lacci.pdf" target="_blank" class="btn">Download CV</a>
+            </div>
+        </div>
+            <div class="home-img reveal reveal-right">
+                <img src="Profile photo/ImagenLacci.jpg" alt="Profile photo of Ramiro Lacci" loading="lazy">
+            </div>
+    </section>
+    <section class="education reveal" id="education">
+        <h2 id="educations-heading" class="heading">Skills</h2>
+        <div class="timeline-items">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date"></div>
+                <div class="timeline-content skills-timeline-content reveal reveal-left">
+                    <div class="category-card">
+                        <h3 class="category-title"><i class='bx bx-code-alt'></i> Languages</h3>
+                        <div class="category-content">
+                            <div class="skill-chip badge--html5"><i class='bx bxl-html5'></i><span>HTML5</span></div>
+                            <div class="skill-chip badge--css3"><i class='bx bxl-css3'></i><span>CSS3</span></div>
+                            <div class="skill-chip badge--js"><i class='bx bxl-javascript'></i><span>JavaScript</span></div>
+                            <div class="skill-chip badge--python"><i class='bx bxl-python'></i><span>Python</span></div>
+                            <div class="skill-chip badge--ruby"><i class='bx bxs-diamond'></i><span>Ruby</span></div>
+                            <div class="skill-chip badge--php"><i class='bx bxl-php'></i><span>PHP</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date"></div>
+                <div class="timeline-content skills-timeline-content reveal reveal-right">
+                    <div class="category-card">
+                        <h3 class="category-title"><i class='bx bx-cog'></i> Frameworks</h3>
+                        <div class="category-content">
+                            <div class="skill-chip badge--bootstrap"><i class='bx bxl-bootstrap'></i><span>Bootstrap</span></div>
+                            <div class="skill-chip badge--node"><i class='bx bxl-nodejs'></i><span>Node.js</span></div>
+                            <div class="skill-chip badge--react"><i class='bx bxl-react'></i><span>React</span></div>
+                            <div class="skill-chip badge--rails"><i class='bx bx-layer'></i><span>Rails</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date"></div>
+                <div class="timeline-content skills-timeline-content reveal reveal-left">
+                    <div class="category-card">
+                        <h3 class="category-title"><i class='bx bx-data'></i> Databases</h3>
+                        <div class="category-content">
+                            <div class="skill-chip badge--mysql"><i class='bx bxs-data'></i><span>MySQL</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date"></div>
+                <div class="timeline-content skills-timeline-content reveal reveal-right">
+                    <div class="category-card">
+                        <h3 class="category-title"><i class='bx bx-laptop'></i> IDE</h3>
+                        <div class="category-content">
+                            <div class="skill-chip badge--vscode"><i class='bx bxl-visual-studio'></i><span>Visual Studio Code</span></div>
+                            <div class="skill-chip badge--cursor"><i class='bx bx-code-curly'></i><span>Cursor</span></div>
+                            <div class="skill-chip badge--replit"><i class='bx bx-code'></i><span>Replit</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date"></div>
+                <div class="timeline-content skills-timeline-content reveal reveal-left">
+                    <div class="category-card">
+                        <h3 class="category-title"><i class='bx bx-grid-alt'></i> Other Tools</h3>
+                        <div class="category-content">
+                            <div class="skill-chip badge--github"><i class='bx bxl-github'></i><span>GitHub</span></div>
+                            <div class="skill-chip badge--git"><i class='bx bxl-git'></i><span>Git</span></div>
+                            <div class="skill-chip badge--perplexity"><i class='bx bx-bulb'></i><span>Perplexity</span></div>
+                            <div class="skill-chip badge--adobexd"><i class='bx bxl-adobe'></i><span>Adobe XD</span></div>
+                            <div class="skill-chip badge--netlify"><i class='bx bxl-netlify'></i><span>Netlify</span></div>
+                            <div class="skill-chip badge--vercel"><i class='bx bxl-vercel'></i><span>Vercel</span></div>
+                            <div class="skill-chip badge--jira"><i class='bx bxl-jira'></i><span>Jira</span></div>
+                            <div class="skill-chip badge--slack"><i class='bx bxl-slack'></i><span>Slack</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <section class="services reveal" id="services">
+            <h2 id="service-heading" class="heading">Services</h2>
+            <div class="services-container">
+                <div class="service-box">
+                    <div class="service-info">
+                        <h4 id="ui-design-subheading">Web Application Development</h4>
+                        <p id="ui-design-description">
+                            Creation of modern, functional, and scalable web applications that offer interactive and personalized experiences for
+                            end users. Comprehensive development ranging from intuitive interface design to backend programming, ensuring performance,
+                            security, and adaptability on any device. Tailored solutions that drive efficiency and digital growth for your project
+                            or business.
+                        </p>
+                    </div>
+                </div>
+                <div class="service-box">
+                    <div class="service-info">
+                        <h4 id="front-develop-subheading">UX/UI Design</h4>
+                        <p id="front-develop-description">
+                            User-centered design that combines user experience (UX) and visual appearance (UI) to create intuitive, attractive,
+                            and easy-to-use digital interfaces. Development of visual solutions that improve user interaction and satisfaction, 
+                            optimizing usability and accessibility in each project. Design strategies that drive conversion and loyalty through
+                            memorable digital experiences.
+                        </p>
+                    </div>
+                </div>
+                <div class="service-box">
+                    <div class="service-info">
+                        <h4 id="back-develop-subheading">3D Modeling</h4>
+                        <p id="back-develop-description">
+                            Professional creation of three-dimensional digital models that transform ideas into accurate and detailed visual
+                            representations. From prototypes and custom parts to product visualizations, 3D modeling allows you to optimize designs,
+                            improve presentations, and facilitate manufacturing. Comprehensive service with a focus on quality, precision, and
+                            adaptability for projects of any scale.
+                        </p>
+                    </div>
+                </div>
+                <div class="service-box">
+                    <div class="service-info">
+                        <h4 id="testing-subheading">QA Manual Testing</h4>
+                        <p id="testing-description">
+                            Manual execution of software tests to identify errors and ensure that each function meets the established requirements. This process involves simulating the end user experience, thoroughly reviewing interfaces and functionalities, and documenting any faults found for subsequent correction. A key approach to ensuring product quality prior to launch.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="proyects reveal" id="projects">
+            <div class="proyects-box">
+                <h2 id="proyect-heading" class="heading">Projects</h2>
+                <div class="wrapper">
+                    <div class="proyect-item">
+                        <img src="Images/billeteravirtual.jpg" alt="Virtual Wallet preview" loading="lazy">
+                        <h2 id="virtual-wallet-subheading">Virtual Wallet</h2>
+                        <div class="rating">
+                            <i class='bx bxs-star star'></i>
+                            <i class='bx bxs-star star'></i>
+                            <i class='bx bxs-star star'></i>
+                            <i class='bx bxs-star star'></i>
+                            <i class='bx bxs-star star'></i>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum laudantium officiis 
+                            ipsam optio quae, dolores fuga quos dolorum quo reiciendis?
+                        </p>
+                        <div class="btn-group">
+                            <a id="demo-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn">Demo</a>
+                            <a id="repo-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn">Repo</a>
+                        </div>
+                    </div>
+                    <div class="proyect-item">
+                        <img src="Images/Screenshot1.jpg.png" alt="Online Store preview" loading="lazy">
+                        <h2 id="online-store-subheading">Online Store</h2>
+                        <div class="rating">
+                            <i class='bx bxs-star star'></i>
+                            <i class='bx bxs-star star'></i>
+                            <i class='bx bxs-star star'></i>
+                            <i class='bx bxs-star star'></i>
+                            <i class='bx bxs-star star'></i>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum laudantium officiis 
+                            ipsam optio quae, dolores fuga quos dolorum quo reiciendis?
+                        </p>
+                        <div class="btn-group">
+                            <a id="demo1-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn">Demo</a>
+                            <a id="repo1-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn">Repo</a>
+                        </div>
+                    </div>
+                    <div class="proyect-item">
+                        <img src="Images/blockgame.jpg" alt="Block Game preview" loading="lazy">
+                        <h2 id="block-game-subheading">Block Game</h2>
+                        <div class="rating">
+                            <i class='bx bxs-star star'></i>
+                            <i class='bx bxs-star star'></i>
+                            <i class='bx bxs-star star'></i>
+                            <i class='bx bxs-star star'></i>
+                            <i class='bx bxs-star star'></i>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum laudantium officiis 
+                            ipsam optio quae, dolores fuga quos dolorum quo reiciendis?
+                        </p>
+                        <div class="btn-group">
+                            <a id="demo2-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn">Demo</a>
+                            <a id="repo2-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn">Repo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <section class="contact reveal" id="contact">
+        <h2 class="heading"><span id="contact-me-heading" style="color: white;">Contact </span><span id="minuscula">Me</span></h2>
+        <form action="" aria-label="Contact form">
+            <div class="input-group">
+                <div class="input-box">
+                    <label class="sr-only" for="full-name-input">Full Name</label>
+                    <input id="full-name-input" name="full-name" type="text" placeholder="Full Name" required>
+                    <label class="sr-only" for="email-input">E-mail</label>
+                    <input id="email-input" name="email" type="email" placeholder="E-mail" required>
+                </div>
+                <div class="input-box">
+                    <label class="sr-only" for="phone-number-input">Phone Number</label>
+                    <input id="phone-number-input" name="phone" type="tel" placeholder="Phone Number">
+                    <label class="sr-only" for="subject-input">Subject</label>
+                    <input id="subject-input" name="subject" type="text" placeholder="Subject">
+                </div>
+            </div>
+            <div class="input-group-2">
+                <label class="sr-only" for="your-message-input">Your Message</label>
+                <textarea id="your-message-input" name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+                <input id="send-message-btn" type="submit" value="Send Message" class="btn">
+            </div>
+        </form>
+    </section>
+    <footer class="footer">
+        <div class="social">
+            <a href="https://www.linkedin.com/in/ramiro-lacci-20386026a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+            <a href="https://wa.link/a1bh6y" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class='bx bxl-whatsapp' ></i></a>
+        </div>
+        <ul class="list">
+            <li>
+                <a id="about-me-link" href="#home">About Me</a>
+            </li>
+            <li>
+                <a id="services-link-footer" href="#services">Services</a>
+            </li>
+            <li>
+                <a id="projects-link-footer" href="#projects">Projects</a>
+            </li>
+        </ul>
+        <p id="copyright-footer" class="copyright">
+            <span id="footer-heading" style="color: white;">© Created By </span><span id="footer2-minuscula">Ramiro Lacci</span><span id="footer2-heading" style="color: white;"> | All Rights Reserved</span>
+        </p>
+    </footer>
+    <script src="script.js" defer></script>
+</body>
+</html>

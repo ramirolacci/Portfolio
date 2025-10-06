@@ -1,0 +1,90 @@
+{
+    "greeting": "Hola, soy",
+    "subheading": "Soy un",
+    "about_me": "Me considero una persona proactiva, que siempre busca la mejora continua, me considero un buen compañero que ayuda en caso de que un compañero lo necesite, no tengo miedo a consultar en caso de dudas. ¡Para mi próximo trabajo me gustaría una empresa con nuevos retos, que me permita crecer y en la que pueda demostrar lo mucho que puedo aportar a la empresa!",
+    "hire_btn": "Contrátame",
+    "download_cv_btn": "Descargar CV",
+    "home_heading": "Inicio",
+    "education_heading": "Habilidades",
+    "services_heading": "Servicios",
+    "projects_heading": "Proyectos",
+    "contact_heading": "Contacto",
+    "educations_heading": "Habilidades",
+    "high_school_subheading": "Escuela secundaria",
+    "university_subheading": "Universidad",
+    "internship_subheading": "Prácticas",
+    "first_job_subheading": "Primer trabajo",
+    "service_heading": "Servicios",
+    "ui_design_subheading": "Desarrollo de aplicaciones web",
+    "ui_design_description": "Creación de aplicaciones web modernas, funcionales y escalables que ofrecen experiencias interactivas y personalizadas para el usuario final. Desarrollo integral desde el diseño de interfaces intuitivas hasta la programación del backend, asegurando rendimiento, seguridad y adaptación en cualquier dispositivo. Soluciones a medida que impulsan la eficiencia y el crecimiento digital de tu proyecto o negocio.",
+    "front_develop_subheading": "Diseño UX/UI",
+    "front_develop_description": "Diseño centrado en el usuario que combina la experiencia de usuario (UX) y la apariencia visual (UI) para crear interfaces digitales intuitivas, atractivas y fáciles de usar. Desarrollo de soluciones visuales que mejoran la interacción y satisfacción del usuario, optimizando la usabilidad y la accesibilidad en cada proyecto. Estrategias de diseño que impulsan la conversión y la fidelización a través de experiencias digitales memorables.",
+    "back_develop_subheading": "Modelado 3D",
+    "back_develop_description": "Creación profesional de modelos digitales tridimensionales que transforman ideas en representaciones visuales precisas y detalladas. Desde prototipos y piezas a medida hasta visualizaciones arquitectónicas y de productos, el modelado 3D permite optimizar diseños, mejorar presentaciones y facilitar la fabricación. Servicio integral con foco en calidad, precisión y adaptabilidad para proyectos de cualquier escala o complejidad.",
+    "testing_subheading": "QA Manual Testing",
+    "testing_description": "Ejecución manual de pruebas de software para identificar errores y asegurar que cada función cumpla con los requisitos establecidos. Este proceso implica simular la experiencia del usuario final, revisar a fondo interfaces y funcionalidades, y documentar cualquier falla encontrada para su posterior corrección. Un enfoque clave para garantizar la calidad del producto antes del lanzamiento.",
+    "proyect_heading": "Proyectos",
+    "virtual_wallet_subheading": "Billetera virtual",
+    "online_store_subheading": "Tienda en línea",
+    "block_game_subheading": "Juego de bloques",
+    "demo_btn": "Maqueta",
+    "repo_btn": "Repositorio",
+    "demo1_btn": "Maqueta",
+    "repo1_btn": "Repositorio",
+    "demo2_btn": "Maqueta",
+    "repo2_btn": "Repositorio",
+    "contact_me_heading": "Contácta",
+    "minuscula": "me",
+    "full_name_input": "Nombre y apellido",
+    "email_input": "Correo electrónico",
+    "phone_number_input": "Número de teléfono",
+    "subject_input": "Asunto",
+    "your_message_input": "Tu mensaje",
+    "send_message_btn": "Enviar mensaje",
+    "about_me_link": "Sobre mí",
+    "services_link_footer": "Servicios",
+    "projects_link_footer": "Proyectos",
+    "footer_heading": "© Creado por ",
+    "footer2_heading": " | Todos los derechos reservados",
+    "footer_minuscula": "Ramiro Lacci ",
+    "education_timeline": [
+      {
+        "date": "2010-2014",
+        "title": "Licenciatura en Ciencias de la Computación",
+        "description": "Universidad de XYZ"
+      },
+      {
+        "date": "2015-2017",
+        "title": "Maestría en Desarrollo Web",
+        "description": "Universidad ABC"
+      }
+    ],
+    "services": [
+      {
+        "title": "Desarrollo Web",
+        "description": "Creación de sitios web impresionantes adaptados a tus necesidades."
+      },
+      {
+        "title": "Diseño Gráfico",
+        "description": "Creación de gráficos visualmente atractivos para tu marca."
+      }
+    ],
+    "projects": [
+      {
+        "name": "Proyecto 1",
+        "rating": "5 Estrellas",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "demo_link": "#",
+        "repo_link": "#",
+        "image": "proyecto1.jpg"
+      },
+      {
+        "name": "Proyecto 2",
+        "rating": "4 Estrellas",
+        "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "demo_link": "#",
+        "repo_link": "#",
+        "image": "proyecto2.jpg"
+      }
+    ]
+  }

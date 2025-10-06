@@ -1,0 +1,90 @@
+{
+    "greeting": "Hi, It's",
+    "subheading": "I'm a",
+    "about_me": "I consider myself a proactive person, who is always looking for continuous improvement, I consider myself a good partner who helps in case a colleague needs it, I am not afraid to consult in case of doubts. For my next job I would like a company with new challenges, which allows me to grow and in which I can show how much I can bring to the company!",
+    "hire_btn": "Hire",
+    "download_cv_btn": "Download CV",
+    "home_heading": "Home",
+    "education_heading": "Skills",
+    "services_heading": "Services",
+    "projects_heading": "Projects",
+    "contact_heading": "Contact",
+    "educations_heading": "Skills",
+    "high_school_subheading": "High School",
+    "university_subheading": "University",
+    "internship_subheading": "Internship",
+    "first_job_subheading": "First Job",
+    "service_heading": "Services",
+    "ui_design_subheading": "Web application development",
+    "ui_design_description": "Creation of modern, functional, and scalable web applications that offer interactive and personalized experiences for end users. Comprehensive development ranging from intuitive interface design to backend programming, ensuring performance, security, and adaptability on any device. Tailored solutions that drive efficiency and digital growth for your project or business.",
+    "front_develop_subheading": "UX/UI design",
+    "front_develop_description": "User-centered design that combines user experience (UX) and visual appearance (UI) to create intuitive, attractive, and easy-to-use digital interfaces. Development of visual solutions that improve user interaction and satisfaction, optimizing usability and accessibility in each project. Design strategies that drive conversion and loyalty through memorable digital experiences.",
+    "back_develop_subheading": "3D modeling",
+    "back_develop_description": "Professional creation of three-dimensional digital models that transform ideas into accurate and detailed visual representations. From prototypes and custom parts to product visualizations, 3D modeling allows you to optimize designs, improve presentations, and facilitate manufacturing. Comprehensive service with a focus on quality, precision, and adaptability for projects of any scale.",
+    "testing_subheading": "QA Manual Testing",
+    "testing_description": "Manual execution of software tests to identify errors and ensure that each function meets the established requirements. This process involves simulating the end user experience, thoroughly reviewing interfaces and functionalities, and documenting any faults found for subsequent correction. A key approach to ensuring product quality prior to launch.",
+    "proyect_heading": "Proyects",
+    "virtual_wallet_subheading": "Virtual Wallet",
+    "online_store_subheading": "Online Store",
+    "block_game_subheading": "Block Game",
+    "demo_btn": "Demo",
+    "repo_btn": "Repo",
+    "demo1_btn": "Demo",
+    "repo1_btn": "Repo",
+    "demo2_btn": "Demo",
+    "repo2_btn": "Repo",
+    "contact_me_heading": "Contact ",
+    "minuscula": "Me",
+    "full_name_input": "Full Name",
+    "email_input": "E-mail",
+    "phone_number_input": "Phone Number",
+    "subject_input": "Subject",
+    "your_message_input": "Your Message",
+    "send_message_btn": "Send Message",
+    "about_me_link": "About Me",
+    "services_link_footer": "Services",
+    "projects_link_footer": "Projects",
+    "footer_heading": "© Created By ",
+    "footer2_heading": " | All Rights Reserved",
+    "footer_minuscula": "Ramiro Lacci ",
+    "education_timeline": [
+      {
+        "date": "2010-2014",
+        "title": "Bachelor's Degree in Computer Science",
+        "description": "University of XYZ"
+      },
+      {
+        "date": "2015-2017",
+        "title": "Master's Degree in Web Development",
+        "description": "ABC University"
+      }
+    ],
+    "services": [
+      {
+        "title": "Web Development",
+        "description": "Creating stunning websites tailored to your needs."
+      },
+      {
+        "title": "Graphic Design",
+        "description": "Crafting visually appealing graphics for your brand."
+      }
+    ],
+    "projects": [
+      {
+        "name": "Project 1",
+        "rating": "5 Stars",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "demo_link": "#",
+        "repo_link": "#",
+        "image": "project1.jpg"
+      },
+      {
+        "name": "Project 2",
+        "rating": "4 Stars",
+        "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "demo_link": "#",
+        "repo_link": "#",
+        "image": "project2.jpg"
+      }
+    ]
+  }  

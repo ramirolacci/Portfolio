@@ -539,17 +539,17 @@ span{
 }
 .wrapper{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 3rem;
+    grid-template-columns: repeat(4,1fr);
+    gap: 2rem;
 }
 .proyect-item{
-    min-height: 550px;
-    max-width: 450px;
+    min-height: 500px;
+    max-width: none;
     background: rgb(0,0,0,0.7);
     border: 3px solid rgba(238,238,238,0.2);
     border-radius: 2rem;
-    margin: 0 2rem;
-    padding: 30px 60px;
+    margin: 0;
+    padding: 24px 32px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -561,7 +561,7 @@ span{
     transition: 0.4s ease-in-out;
 }
 .proyect-item:hover{
-    border: 3px solid var(--main-color);
+    border: 3px solid rgba(238,238,238,0.2);
     transform: translateY(-10px)scale(1.03);
     box-shadow: 0 0 50px var(--main-color);
 }

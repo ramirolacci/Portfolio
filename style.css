@@ -493,7 +493,7 @@ span{
 }
 .service-box:hover{
     transform: translateY(-2px);
-    box-shadow: 0 14px 28px rgba(0,0,0,.4), 0 0 0 2px rgba(255,255,255,0.08) inset;
+    box-shadow: 0 14px 28px rgba(0,0,0,.4), 0 0 0 2px rgba(255,255,255,0.08) inset, 0 0 24px var(--main-color);
     border-color: rgba(255,255,255,0.08);
 }
 .service-box .service-info{

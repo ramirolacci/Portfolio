@@ -41,9 +41,10 @@ function changeLanguage(language) {
         if (backDesc && data.back_develop_description) backDesc.innerText = data.back_develop_description;
         setText('testing-subheading', data.testing_subheading);
         setText('proyect-heading', data.proyect_heading);
-        setText('virtual-wallet-subheading', data.virtual_wallet_subheading);
-        setText('online-store-subheading', data.online_store_subheading);
-        setText('block-game-subheading', data.block_game_subheading);
+        // Mantener títulos de proyectos fijos (no traducir)
+        // setText('virtual-wallet-subheading', data.virtual_wallet_subheading);
+        // setText('online-store-subheading', data.online_store_subheading);
+        // setText('block-game-subheading', data.block_game_subheading);
         setText('contact-me-heading', data.contact_me_heading);
         setText('minuscula', data.minuscula);
         setText('services-link-footer', data.services_link_footer);

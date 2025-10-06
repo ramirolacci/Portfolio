@@ -32,6 +32,11 @@ body{
 .reveal.reveal-left{ transform: translateX(-24px); }
 .reveal.reveal-up{ transform: translateY(24px); }
 .reveal.is-visible{ opacity: 1; transform: none; }
+/* Stagger para proyectos: aparición una por una */
+.proyects .proyect-item{ transition-delay: 0ms; }
+.proyects .proyect-item:nth-child(2){ transition-delay: 120ms; }
+.proyects .proyect-item:nth-child(3){ transition-delay: 240ms; }
+.proyects .proyect-item:nth-child(4){ transition-delay: 360ms; }
 
 /* Orden específico para Home: imagen primero, texto después */
 .home .reveal-right{ transition-delay: 0ms; }

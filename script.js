@@ -41,6 +41,10 @@ function changeLanguage(language) {
         if (backDesc && data.back_develop_description) backDesc.innerText = data.back_develop_description;
         setText('testing-subheading', data.testing_subheading);
         setText('proyect-heading', data.proyect_heading);
+        const p1 = byId('project1-desc'); if (p1 && data.project1_desc) p1.innerText = data.project1_desc;
+        const p2 = byId('project2-desc'); if (p2 && data.project2_desc) p2.innerText = data.project2_desc;
+        const p3 = byId('project3-desc'); if (p3 && data.project3_desc) p3.innerText = data.project3_desc;
+        const p4 = byId('project4-desc'); if (p4 && data.project4_desc) p4.innerText = data.project4_desc;
         // Mantener títulos de proyectos fijos (no traducir)
         // setText('virtual-wallet-subheading', data.virtual_wallet_subheading);
         // setText('online-store-subheading', data.online_store_subheading);

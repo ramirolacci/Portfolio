@@ -158,8 +158,15 @@ menuIcon.onclick = () =>{
                 observer.unobserve(entry.target);
             }
         });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
-    items.forEach(el => obs.observe(el));
+    }, { rootMargin: '0px 0px 30% 0px', threshold: 0 });
+    items.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('is-visible');
+        } else {
+            obs.observe(el);
+        }
+    });
 })();
 
 // Arrastre horizontal para carrusel de Skills

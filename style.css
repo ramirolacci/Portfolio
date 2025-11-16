@@ -379,6 +379,35 @@ span{
 .badge--vercel{ background:#111; }
 .badge--jira{ background:#0052CC; }
 .badge--slack{ background:#4a154b; }
+.badge--supabase {
+    background: #3ECF8E;
+    color: #202020;
+    border: none;
+}
+.db-badge {
+    height: 2.6em;
+    min-height: unset;
+    max-height: 2.6em;
+    line-height: 2.6em;
+    padding: 0.6rem 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+    font-size: 1.15rem;
+}
+.db-badge img,
+img.db-badge {
+    height: 2.1em !important;
+    min-height: unset;
+    max-height: 2.1em;
+    width: auto;
+    margin: 0 .22em !important;
+    padding: 0 !important;
+    vertical-align: middle;
+    box-shadow: none !important;
+    border-radius: 0.8rem !important;
+}
 
 @media(max-width:991px){
     .skills{ gap: 2rem; }

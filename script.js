@@ -176,3 +176,36 @@ menuIcon.onclick = () =>{
     track.addEventListener('mousedown', onDown); track.addEventListener('mouseleave', onLeaveUp); track.addEventListener('mouseup', onLeaveUp); track.addEventListener('mousemove', onMove);
     track.addEventListener('touchstart', onDown, { passive: true }); track.addEventListener('touchend', onLeaveUp); track.addEventListener('touchmove', onMove, { passive: false });
 })();
+
+// Botón para mostrar más proyectos
+document.addEventListener('DOMContentLoaded', () => {
+    const verMasBtn = document.getElementById('ver-mas-btn');
+    let mostrando = false;
+    if (verMasBtn) {
+        verMasBtn.addEventListener('click', () => {
+            const extras = document.querySelectorAll('.extra-project');
+            mostrando = !mostrando;
+            if (mostrando) {
+                extras.forEach(el => {
+                    el.classList.remove('hidden');
+                    el.classList.remove('hiding');
+                });
+                verMasBtn.textContent = 'Ver Menos';
+            } else {
+                extras.forEach(el => {
+                    el.classList.add('hiding');
+                    el.classList.remove('is-visible');
+                    // Al terminar la transición, oculta de verdad
+                    el.addEventListener('transitionend', function handler(e) {
+                        if (e.propertyName === 'opacity') {
+                            el.classList.add('hidden');
+                            el.classList.remove('hiding');
+                            el.removeEventListener('transitionend', handler);
+                        }
+                    });
+                });
+                verMasBtn.textContent = 'Ver Más';
+            }
+        });
+    }
+});

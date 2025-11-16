@@ -835,3 +835,15 @@ img.db-badge {
         width: 40px;
     }
 }
+.extra-project {
+    transition: opacity 0.7s cubic-bezier(.49,.25,.6,1.09), transform 0.7s cubic-bezier(.49,.25,.6,1.09);
+}
+.hiding {
+    opacity: 0 !important;
+    transform: scale(0.97) translateY(32px) !important;
+    pointer-events: none;
+    transition: opacity 0.7s cubic-bezier(.49,.25,.6,1.09), transform 0.7s cubic-bezier(.49,.25,.6,1.09);
+}
+.hidden {
+    display: none !important;
+}

@@ -2,122 +2,101 @@ let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
-let flags = document.querySelectorAll('.flags__item');
+
+// Guardamos último idioma cargado
+window.currentLangData = null;
+
+// Botón para mostrar más proyectos - Variables globales
+let currentLanguage = 'en'; // Idioma por defecto: inglés
+let mostrandoProyectosExtras = false;
+
+const BTN_TEXTS = {
+    en: { more: 'See More', less: 'See Less' },
+    es: { more: 'Ver Más', less: 'Ver Menos' }
+};
+
+function updateButtonText() {
+    const verMasBtn = document.getElementById('ver-mas-btn');
+    if (verMasBtn) {
+        const texts = BTN_TEXTS[currentLanguage];
+        verMasBtn.textContent = mostrandoProyectosExtras ? texts.less : texts.more;
+    }
+}
 
 function changeLanguage(language) {
-    fetch(`translations_${language}.json`)
+  fetch(`translations_${language}.json`)
     .then(response => response.json())
     .then(data => {
-        const byId = (id) => document.getElementById(id);
-        const setText = (id, value) => { const el = byId(id); if (el) el.innerText = value };
-        const setValue = (id, value) => { const el = byId(id); if (el) el.value = value };
-        const setPlaceholder = (id, value) => { const el = byId(id); if (el) el.placeholder = value };
+      window.currentLangData = data;
+      const byId = (id) => document.getElementById(id);
+      const setText = (id, value) => { const el = byId(id); if (el) el.innerText = value };
+      const setValue = (id, value) => { const el = byId(id); if (el) el.value = value };
+      const setPlaceholder = (id, value) => { const el = byId(id); if (el) el.placeholder = value };
 
-        setText('greeting', data.greeting);
-        setText('subheading', data.subheading);
-        setText('about-me', data.about_me);
-        setText('hire-btn', data.hire_btn);
-        setText('download-cv-btn', data.download_cv_btn);
-        setText('home-heading', data.home_heading);
-        setText('education-heading', data.education_heading);
-        setText('services-heading', data.services_heading);
-        setText('projects-heading', data.projects_heading);
-        setText('contact-heading', data.contact_heading);
-        setText('about-me-link', data.about_me_link);
-        setText('educations-heading', data.education_heading);
-        setText('high-school-subheading', data.high_school_subheading);
-        setText('university-subheading', data.university_subheading);
-        setText('internship-subheading', data.internship_subheading);
-        setText('first-job-subheading', data.first_job_subheading);
-        setText('service-heading', data.service_heading);
-        setText('ui-design-subheading', data.ui_design_subheading);
-        const uiDesc = document.getElementById('ui-design-description');
-        if (uiDesc && data.ui_design_description) uiDesc.innerText = data.ui_design_description;
-        setText('front-develop-subheading', data.front_develop_subheading);
-        const frontDesc = document.getElementById('front-develop-description');
-        if (frontDesc && data.front_develop_description) frontDesc.innerText = data.front_develop_description;
-        setText('back-develop-subheading', data.back_develop_subheading);
-        const backDesc = document.getElementById('back-develop-description');
-        if (backDesc && data.back_develop_description) backDesc.innerText = data.back_develop_description;
-        setText('testing-subheading', data.testing_subheading);
-        setText('proyect-heading', data.proyect_heading);
-        const p1 = byId('project1-desc'); if (p1 && data.project1_desc) p1.innerText = data.project1_desc;
-        const p2 = byId('project2-desc'); if (p2 && data.project2_desc) p2.innerText = data.project2_desc;
-        const p3 = byId('project3-desc'); if (p3 && data.project3_desc) p3.innerText = data.project3_desc;
-        const p4 = byId('project4-desc'); if (p4 && data.project4_desc) p4.innerText = data.project4_desc;
-        // Mantener títulos de proyectos fijos (no traducir)
-        // setText('virtual-wallet-subheading', data.virtual_wallet_subheading);
-        // setText('online-store-subheading', data.online_store_subheading);
-        // setText('block-game-subheading', data.block_game_subheading);
-        setText('contact-me-heading', data.contact_me_heading);
-        setText('minuscula', data.minuscula);
-        setText('services-link-footer', data.services_link_footer);
-        setText('projects-link-footer', data.projects_link_footer);
-        setText('footer-heading', data.footer_heading);
-        setText('footer2-heading', data.footer2_heading);
-        const footerName = byId('footer2-minuscula'); if (footerName) footerName.innerText = data.footer_minuscula;
-
-        setPlaceholder('full-name-input', data.full_name_input);
-        setPlaceholder('email-input', data.email_input);
-        setPlaceholder('phone-number-input', data.phone_number_input);
-        setPlaceholder('subject-input', data.subject_input);
-        setPlaceholder('your-message-input', data.your_message_input);
-        setValue('send-message-btn', data.send_message_btn);
-        const testDesc = byId('testing-description');
-        if (testDesc && data.testing_description) testDesc.innerText = data.testing_description;
-
-        const educationTimeline = byId('education-timeline');
-        const servicesContainer = byId('services-container');
-        const projectsWrapper = byId('projects-wrapper');
-        if (educationTimeline && Array.isArray(data.education_timeline)) {
-            educationTimeline.innerHTML = "";
-            data.education_timeline.forEach(item => {
-                educationTimeline.innerHTML += `<div class="timeline-item">
-                                                    <div class="timeline-dot"></div>
-                                                        <div class="timeline-date">${item.date}</div>
-                                                        <div class="timeline-content">
-                                                            <h3>${item.title}</h3>
-                                                            <p>${item.description}</p>
-                                                        </div>
-                                                </div>`;
-            });
-        }
-        if (servicesContainer && Array.isArray(data.services)) {
-            servicesContainer.innerHTML = "";
-            data.services.forEach(service => {
-                servicesContainer.innerHTML += `<div class="service-box">
-                                                    <div class="service-info">
-                                                        <h4>${service.title}</h4>
-                                                        <p>${service.description}</p>
-                                                    </div>
-                                                </div>`;
-            });
-        }
-        if (projectsWrapper && Array.isArray(data.projects)) {
-            projectsWrapper.innerHTML = "";
-            data.projects.forEach(project => {
-                projectsWrapper.innerHTML += `<div class="project-item">
-                                                    <img src="${project.image}" alt="">
-                                                    <h2>${project.name}</h2>
-                                                    <div class="rating">${project.rating}</div>
-                                                    <p>${project.description}</p>
-                                                    <div class="btn-group">
-                                                        <a href="${project.demo_link}" target="_blank" class="btn" rel="noopener noreferrer">Demo</a>
-                                                        <a href="${project.repo_link}" target="_blank" class="btn" rel="noopener noreferrer">Repo</a>
-                                                    </div>
-                                                </div>`;
-            });
-        }
+      setText('greeting', data.greeting);
+      setText('subheading', data.subheading);
+      setText('about-me', data.about_me);
+      setText('hire-btn', data.hire_btn);
+      setText('download-cv-btn', data.download_cv_btn);
+      setText('home-heading', data.home_heading);
+      setText('education-heading', data.education_heading);
+      setText('services-heading', data.services_heading);
+      setText('projects-heading', data.projects_heading);
+      setText('contact-heading', data.contact_heading);
+      setText('about-me-link', data.about_me_link);
+      setText('educations-heading', data.education_heading);
+      setText('high-school-subheading', data.high_school_subheading);
+      setText('university-subheading', data.university_subheading);
+      setText('internship-subheading', data.internship_subheading);
+      setText('first-job-subheading', data.first_job_subheading);
+      setText('service-heading', data.service_heading);
+      setText('ui-design-subheading', data.ui_design_subheading);
+      const uiDesc = document.getElementById('ui-design-description');
+      if (uiDesc && data.ui_design_description) uiDesc.innerText = data.ui_design_description;
+      setText('front-develop-subheading', data.front_develop_subheading);
+      const frontDesc = document.getElementById('front-develop-description');
+      if (frontDesc && data.front_develop_description) frontDesc.innerText = data.front_develop_description;
+      setText('back-develop-subheading', data.back_develop_subheading);
+      const backDesc = document.getElementById('back-develop-description');
+      if (backDesc && data.back_develop_description) backDesc.innerText = data.back_develop_description;
+      setText('testing-subheading', data.testing_subheading);
+      setText('proyect-heading', data.proyect_heading);
+      const p1 = byId('project1-desc'); if (p1 && data.project1_desc) p1.innerText = data.project1_desc;
+      const p2 = byId('project2-desc'); if (p2 && data.project2_desc) p2.innerText = data.project2_desc;
+      const p3 = byId('project3-desc'); if (p3 && data.project3_desc) p3.innerText = data.project3_desc;
+      const p4 = byId('project4-desc'); if (p4 && data.project4_desc) p4.innerText = data.project4_desc;
+      const p5 = byId('project5-desc'); if (p5 && data.project5_desc) p5.innerText = data.project5_desc;
+      const p6 = byId('project6-desc'); if (p6 && data.project6_desc) p6.innerText = data.project6_desc;
+      setText('contact-me-heading', data.contact_me_heading);
+      setText('minuscula', data.minuscula);
+      setText('services-link-footer', data.services_link_footer);
+      setText('projects-link-footer', data.projects_link_footer);
+      setText('footer-heading', data.footer_heading);
+      setText('footer2-heading', data.footer2_heading);
+      const footerName = byId('footer2-minuscula'); if (footerName) footerName.innerText = data.footer_minuscula;
+      setPlaceholder('full-name-input', data.full_name_input);
+      setPlaceholder('email-input', data.email_input);
+      setPlaceholder('phone-number-input', data.phone_number_input);
+      setPlaceholder('subject-input', data.subject_input);
+      setPlaceholder('your-message-input', data.your_message_input);
+      setValue('send-message-btn', data.send_message_btn);
+      const testDesc = byId('testing-description');
+      if (testDesc && data.testing_description) testDesc.innerText = data.testing_description;
+      // Projects 5 y 6 ya están arriba
+      // Actualizar idioma actual y texto del botón
+      currentLanguage = language;
+      updateButtonText();
     })
     .catch(error => console.error('Error:', error));
 }
 
-// Manejador de eventos para cambiar de idioma cuando se hace clic en una bandera
+// Traducción de banderas
+let flags = document.querySelectorAll('.flags__item');
 flags.forEach(flag => {
-    flag.addEventListener('click', () => {
-        let lang = flag.dataset.lang;
-        changeLanguage(lang);
-    });
+  flag.addEventListener('click', () => {
+    let lang = flag.dataset.lang;
+    changeLanguage(lang);
+  });
 });
 
 window.onscroll = () =>{
@@ -177,25 +156,25 @@ menuIcon.onclick = () =>{
     track.addEventListener('touchstart', onDown, { passive: true }); track.addEventListener('touchend', onLeaveUp); track.addEventListener('touchmove', onMove, { passive: false });
 })();
 
-// Botón para mostrar más proyectos
+// Botón para mostrar más proyectos - Inicialización
 document.addEventListener('DOMContentLoaded', () => {
     const verMasBtn = document.getElementById('ver-mas-btn');
-    let mostrando = false;
     if (verMasBtn) {
+        // Inicializar con texto en inglés
+        verMasBtn.textContent = BTN_TEXTS['en'].more;
+        
         verMasBtn.addEventListener('click', () => {
             const extras = document.querySelectorAll('.extra-project');
-            mostrando = !mostrando;
-            if (mostrando) {
+            mostrandoProyectosExtras = !mostrandoProyectosExtras;
+            if (mostrandoProyectosExtras) {
                 extras.forEach(el => {
                     el.classList.remove('hidden');
                     el.classList.remove('hiding');
                 });
-                verMasBtn.textContent = 'Ver Menos';
             } else {
                 extras.forEach(el => {
                     el.classList.add('hiding');
                     el.classList.remove('is-visible');
-                    // Al terminar la transición, oculta de verdad
                     el.addEventListener('transitionend', function handler(e) {
                         if (e.propertyName === 'opacity') {
                             el.classList.add('hidden');
@@ -204,8 +183,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     });
                 });
-                verMasBtn.textContent = 'Ver Más';
             }
+            updateButtonText();
         });
     }
 });

@@ -90,15 +90,15 @@ a:focus, button:focus, input:focus, textarea:focus{
 }
 .navbar a{
     font-size: 1.8rem;
-    color: var(--text-color);
+    color: white;
     margin-left: 4rem;
     font-weight: 500;
-    transition: 0.3s ease;
+    transition: 0.3s ease-in-out;
     border-bottom: 3px solid transparent;
 }
 .navbar a:hover,
-.navbar a.active{
-    color: var(--main-color);
+.navbar a.active {
+    color: white;
     border-bottom: 3px solid var(--main-color);
 }
 #menu-icon{

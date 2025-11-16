@@ -166,6 +166,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 extras.forEach(el => {
                     el.classList.remove('hidden');
                     el.classList.remove('hiding');
+                    // Forzar repaint para que la animación funcione
+                    el.offsetHeight;
+                    // Agregar is-visible después de un pequeño delay para que el reveal funcione
+                    setTimeout(() => {
+                        el.classList.add('is-visible');
+                    }, 50);
                 });
             } else {
                 extras.forEach(el => {

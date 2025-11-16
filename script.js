@@ -151,22 +151,16 @@ menuIcon.onclick = () =>{
         items.forEach(el => el.classList.add('is-visible'));
         return;
     }
-    const obs = new IntersectionObserver((entries, observer) => {
+    const obs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
+            } else {
+                entry.target.classList.remove('is-visible');
             }
         });
     }, { rootMargin: '0px 0px 30% 0px', threshold: 0 });
-    items.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-            el.classList.add('is-visible');
-        } else {
-            obs.observe(el);
-        }
-    });
+    items.forEach(el => obs.observe(el));
 })();
 
 // Arrastre horizontal para carrusel de Skills

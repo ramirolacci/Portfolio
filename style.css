@@ -26,6 +26,7 @@ body{
 .reveal{
     opacity: 0;
     transition: opacity 1000ms ease-out, transform 1000ms ease-out;
+    transition-delay: 120ms;
 }
 .reveal.reveal-down{ transform: translateY(-24px); }
 .reveal.reveal-right{ transform: translateX(24px); }

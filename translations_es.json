@@ -10,10 +10,6 @@
     "projects_heading": "Proyectos",
     "contact_heading": "Contacto",
     "educations_heading": "Habilidades",
-    "high_school_subheading": "Escuela secundaria",
-    "university_subheading": "Universidad",
-    "internship_subheading": "Prácticas",
-    "first_job_subheading": "Primer trabajo",
     "service_heading": "Servicios",
     "ui_design_subheading": "Desarrollo de aplicaciones web",
     "ui_design_description": "Creación de aplicaciones web modernas, funcionales y escalables que ofrecen experiencias interactivas y personalizadas para el usuario final. Desarrollo integral desde el diseño de interfaces intuitivas hasta la programación del backend, asegurando rendimiento, seguridad y adaptación en cualquier dispositivo. Soluciones a medida que impulsan la eficiencia y el crecimiento digital de tu proyecto o negocio.",
@@ -30,12 +26,6 @@
     "project4_desc": "Sitio oficial de la marca Mi Gusto, diseñado para ofrecer una experiencia atractiva y funcional que refleje la identidad y valores de la marca. Implementación con tecnologías modernas para una navegación intuitiva y contenido dinámico.",
     "project5_desc": "Página creada para la campaña de lanzamiento de la nueva empanada Mi Gusto en colaboración con Flamin Hot. Un diseño moderno y adaptativo que destaca el sabor picante del producto, con el objetivo de atraer a los consumidores e impulsar la promoción digital.",
     "project6_desc": "Aplicación de chat con inteligencia artificial basada localmente, diseñada para interactuar con el usuario mediante el procesamiento del lenguaje natural.",
-    "demo_btn": "Maqueta",
-    "repo_btn": "Repositorio",
-    "demo1_btn": "Maqueta",
-    "repo1_btn": "Repositorio",
-    "demo2_btn": "Maqueta",
-    "repo2_btn": "Repositorio",
     "contact_me_heading": "Contácta",
     "minuscula": "me",
     "full_name_input": "Nombre y apellido",
@@ -49,45 +39,5 @@
     "projects_link_footer": "Proyectos",
     "footer_heading": "© Creado por ",
     "footer2_heading": " | Todos los derechos reservados",
-    "footer_minuscula": "Ramiro Lacci ",
-    "education_timeline": [
-      {
-        "date": "2010-2014",
-        "title": "Licenciatura en Ciencias de la Computación",
-        "description": "Universidad de XYZ"
-      },
-      {
-        "date": "2015-2017",
-        "title": "Maestría en Desarrollo Web",
-        "description": "Universidad ABC"
-      }
-    ],
-    "services": [
-      {
-        "title": "Desarrollo Web",
-        "description": "Creación de sitios web impresionantes adaptados a tus necesidades."
-      },
-      {
-        "title": "Diseño Gráfico",
-        "description": "Creación de gráficos visualmente atractivos para tu marca."
-      }
-    ],
-    "projects": [
-      {
-        "name": "Proyecto 1",
-        "rating": "5 Estrellas",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        "demo_link": "#",
-        "repo_link": "#",
-        "image": "proyecto1.jpg"
-      },
-      {
-        "name": "Proyecto 2",
-        "rating": "4 Estrellas",
-        "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        "demo_link": "#",
-        "repo_link": "#",
-        "image": "proyecto2.jpg"
-      }
-    ]
-  }
+    "footer_minuscula": "Ramiro Lacci "
+}

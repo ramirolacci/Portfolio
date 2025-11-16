@@ -45,10 +45,6 @@ function changeLanguage(language) {
       setText('contact-heading', data.contact_heading);
       setText('about-me-link', data.about_me_link);
       setText('educations-heading', data.education_heading);
-      setText('high-school-subheading', data.high_school_subheading);
-      setText('university-subheading', data.university_subheading);
-      setText('internship-subheading', data.internship_subheading);
-      setText('first-job-subheading', data.first_job_subheading);
       setText('service-heading', data.service_heading);
       setText('ui-design-subheading', data.ui_design_subheading);
       const uiDesc = document.getElementById('ui-design-description');

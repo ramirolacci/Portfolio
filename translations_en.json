@@ -10,10 +10,6 @@
     "projects_heading": "Projects",
     "contact_heading": "Contact",
     "educations_heading": "Skills",
-    "high_school_subheading": "High School",
-    "university_subheading": "University",
-    "internship_subheading": "Internship",
-    "first_job_subheading": "First Job",
     "service_heading": "Services",
     "ui_design_subheading": "Web application development",
     "ui_design_description": "Creation of modern, functional, and scalable web applications that offer interactive and personalized experiences for end users. Comprehensive development ranging from intuitive interface design to backend programming, ensuring performance, security, and adaptability on any device. Tailored solutions that drive efficiency and digital growth for your project or business.",
@@ -30,12 +26,6 @@
     "project4_desc": "Official website of the Mi Gusto brand, designed to offer an attractive and functional experience that reflects the brand's identity and values. Implementation with modern technologies for intuitive navigation and dynamic content.",
     "project5_desc": "Landing page created for the launch campaign of the new Mi Gusto empanada in collaboration with Flamin Hot. A modern and responsive design that highlights the spicy flavor of the product, with the aim of attracting consumers and boosting digital promotion.",
     "project6_desc": "Locally based artificial intelligence chat application designed to interact with the user through natural language processing.",
-    "demo_btn": "Demo",
-    "repo_btn": "Repo",
-    "demo1_btn": "Demo",
-    "repo1_btn": "Repo",
-    "demo2_btn": "Demo",
-    "repo2_btn": "Repo",
     "contact_me_heading": "Contact ",
     "minuscula": "Me",
     "full_name_input": "Full Name",
@@ -49,45 +39,5 @@
     "projects_link_footer": "Projects",
     "footer_heading": "© Created By ",
     "footer2_heading": " | All Rights Reserved",
-    "footer_minuscula": "Ramiro Lacci ",
-    "education_timeline": [
-      {
-        "date": "2010-2014",
-        "title": "Bachelor's Degree in Computer Science",
-        "description": "University of XYZ"
-      },
-      {
-        "date": "2015-2017",
-        "title": "Master's Degree in Web Development",
-        "description": "ABC University"
-      }
-    ],
-    "services": [
-      {
-        "title": "Web Development",
-        "description": "Creating stunning websites tailored to your needs."
-      },
-      {
-        "title": "Graphic Design",
-        "description": "Crafting visually appealing graphics for your brand."
-      }
-    ],
-    "projects": [
-      {
-        "name": "Project 1",
-        "rating": "5 Stars",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        "demo_link": "#",
-        "repo_link": "#",
-        "image": "project1.jpg"
-      },
-      {
-        "name": "Project 2",
-        "rating": "4 Stars",
-        "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        "demo_link": "#",
-        "repo_link": "#",
-        "image": "project2.jpg"
-      }
-    ]
-  }  
+    "footer_minuscula": "Ramiro Lacci "
+}

@@ -55,9 +55,20 @@ body{
 }
 
 /* Enfoque visible */
-a:focus, button:focus, input:focus, textarea:focus{
+a:focus:not(:hover):not(:active),
+button:focus:not(:hover):not(:active),
+input:focus:not(:hover):not(:active),
+textarea:focus:not(:hover):not(:active) {
     outline: 2px solid var(--main-color);
     outline-offset: 3px;
+}
+
+/* Evita outline excesivo cuando está hover o active, se muestra sólo el borde inferior/border visual */
+.navbar a:focus,
+.navbar a:active,
+.footer ul li a:focus,
+.footer ul li a:active {
+    outline: none;
 }
 .header{
     position: fixed;

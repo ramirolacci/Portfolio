@@ -39,5 +39,11 @@
     "projects_link_footer": "Projects",
     "footer_heading": "© Created By ",
     "footer2_heading": " | All Rights Reserved",
-    "footer_minuscula": "Ramiro Lacci "
+    "footer_minuscula": "Ramiro Lacci ",
+    "databases_heading": "Databases",
+    "ide_heading": "IDE",
+    "hostings_heading": "Hostings",
+    "other_tools_heading": "Other Tools",
+    "ver-mas": "See More",
+    "ver-menos": "See Less"
 }

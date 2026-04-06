@@ -61,8 +61,9 @@ const Navbar: React.FC = () => {
             <a href="#home" className="logo">Ramiro <span>Lacci</span></a>
 
             <div className="nav-container">
-                <div id="menu-icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                    {isMenuOpen ? <X size={36} /> : <Menu size={36} />}
+                <div id="menu-icon" className={isMenuOpen ? 'active' : ''} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <Menu className="menu-icon-inner" size={36} />
+                    <X className="x-icon-inner" size={36} />
                 </div>
 
                 <nav className={`navbar ${isMenuOpen ? 'active' : ''}`}>

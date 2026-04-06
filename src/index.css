@@ -1339,6 +1339,15 @@ img.db-badge {
         padding: 10rem 3% 2rem;
     }
 
+    #projects {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #projects .heading {
+        padding: 0 5%;
+    }
+
     .timeline-items::before {
         left: 7px;
     }
@@ -1362,7 +1371,39 @@ img.db-badge {
     }
 
     .proyects .wrapper {
-        grid-template-columns: repeat(1, 1fr);
+        display: flex;
+        flex-wrap: nowrap; /* Avoid wrapping */
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth iOS scroll */
+        scroll-snap-type: x mandatory;
+        gap: 2rem;
+        padding: 6rem 5%; /* Adjusted padding for better visual flow and avoid clipping */
+        margin: -4rem 0; /* Offset the extra padding to keep the section layout tight */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        justify-content: flex-start;
+        width: 100%;
+        scroll-behavior: auto; /* Required for seamless loop! */
+    }
+
+    .proyects .wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+    .proyect-item {
+        flex: 0 0 75%; /* Reduced width */
+        flex-shrink: 0; /* Important for horizontal scroll */
+        scroll-snap-align: center;
+        min-height: 420px; /* Reduced height */
+        padding: 2rem;
+    }
+    
+    .proyects-box .proyect-item img {
+        height: 40%; /* Reduced image height to show more text */
+    }
+
+    .ver-mas-container {
+        display: none;
     }
 
     .contact form {
@@ -1447,7 +1488,8 @@ img.db-badge {
 
     .home {
         flex-direction: column-reverse;
-        margin: 5rem 4rem;
+        margin: 2rem 4rem;
+        gap: 2rem;
     }
 
     .nav-container {
@@ -1461,12 +1503,19 @@ img.db-badge {
     }
 
     .home-content h3 {
-        font-size: 2.6rem;
+        font-size: 2.5rem;
+        white-space: nowrap;
+    }
+
+    .text-animation {
+        font-size: inherit;
+        min-width: 15rem;
     }
 
     .home-content h1 {
-        font-size: 6rem;
-        margin-top: 3rem;
+        font-size: 5rem;
+        margin-top: 1rem;
+        white-space: nowrap;
     }
 
     .home-content p {
@@ -1475,7 +1524,9 @@ img.db-badge {
     }
 
     .home-img img {
-        width: 56vw;
+        width: 72vw;
+        max-width: 350px;
+        top: 0;
     }
 
     .services h2 {

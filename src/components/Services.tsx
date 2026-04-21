@@ -12,14 +12,8 @@ const Services: React.FC = () => {
     const headingRef = useRef<HTMLHeadingElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const isEnglish = i18n.language === 'en';
 
-    const services = [
-        { title: t('ui_design_subheading'), description: t('ui_design_description') },
-        { title: t('front_develop_subheading'), description: t('front_develop_description') },
-        { title: t('back_develop_subheading'), description: t('back_develop_description') },
-        { title: t('testing_subheading'), description: t('testing_description') },
-    ];
+
 
     useEffect(() => {
         const section = sectionRef.current;
@@ -60,22 +54,7 @@ const Services: React.FC = () => {
             <h2 className="heading" ref={headingRef}>{t('service_heading')}</h2>
 
             <div ref={containerRef}>
-                {isEnglish
-                    ? (
-                        <CodeEditorSimulator />
-                    ) : (
-                        <div className="services-container">
-                            {services.map((service, idx) => (
-                                <div key={idx} className="service-box">
-                                    <div className="service-info">
-                                        <h4>{service.title}</h4>
-                                        <p>{service.description}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    )
-                }
+                <CodeEditorSimulator />
             </div>
         </section>
     );

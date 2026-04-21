@@ -638,7 +638,11 @@ span {
 }
 
 .badge--cursor {
-    background: #333;
+    background: #000000 !important;
+}
+
+.badge--antigravity {
+    background: #7b2ff7;
 }
 
 .badge--replit {

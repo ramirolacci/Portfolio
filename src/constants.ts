@@ -96,7 +96,8 @@ export const SKILLS = [
         icon: "bx-laptop",
         items: [
             { name: "Visual Studio Code", icon: "bxl-visual-studio", badge: "vscode" },
-            { name: "Cursor", icon: "bx-code-curly", badge: "cursor" },
+            { name: "Cursor", icon: "bx-navigation", badge: "cursor" },
+            { name: "Antigravity", icon: "bx-rocket", badge: "antigravity" },
             { name: "Replit", icon: "bx-code", badge: "replit" },
         ]
     },

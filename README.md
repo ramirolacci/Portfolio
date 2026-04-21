@@ -1,73 +1,94 @@
-# React + TypeScript + Vite
+<div align="center">
+  <h1>🚀 Ramiro Lacci | Web Portfolio</h1>
+  <p><strong>A modern, high-performance, and visually stunning web architecture showcase.</strong></p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  <p>
+    <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+    <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+    <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+    <img src="https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=white" alt="GSAP" />
+    <img src="https://img.shields.io/badge/i18next-26A69A?style=for-the-badge&logo=i18next&logoColor=white" alt="i18next" />
+  </p>
+</div>
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Overview
 
-## React Compiler
+This project is a high-end personal portfolio designed to highlight technical expertise and creative design. Built with **React 19** and **TypeScript**, it features a smooth user experience powered by **GSAP** animations and a dual-language system.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🌟 Key Features
 
-## Expanding the ESLint configuration
+- **🌑 Premium Dark Aesthetic**: A sleek, modern design with glassmorphism effects and curated color palettes.
+- **🔡 Bi-lingual Support**: Seamlessly switch between **English** and **Spanish** using `react-i18next`.
+- **🎬 Professional Animations**: Fluid entrance and scroll-triggered animations using `GSAP` and `ScrollTrigger`.
+- **💻 Code Simulation**: An interactive "Services" section that simulates a real-time code editor typing experience.
+- **📱 Ultra Responsive**: Optimized for all devices, from desktop monitors to mobile phones.
+- **🎨 Custom Design System**: Built with vanilla CSS for maximum performance and unique styling control.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Core**: [React 19](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Animations**: [GSAP](https://greensock.com/gsap/) & [ScrollTrigger](https://greensock.com/scrolltrigger/)
+- **Translation**: [i18next](https://www.i18next.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Typing FX**: [Typed.js](https://mattboldt.github.io/typed.js/)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├── assets/             # Images and SVG icons
+├── components/         # Reusable React components
+│   ├── CodeEditorSimulator.tsx
+│   ├── Hero.tsx
+│   ├── Navbar.tsx
+│   └── ...
+├── translations/       # i18n JSON files (EN/ES)
+├── index.css           # Global styles and design system
+└── main.tsx            # Application entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Follow these steps to run the project locally:
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/ramirolacci/Portfolio.git
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run in development mode**
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 📬 Contact & Socials
+
+- **LinkedIn**: [Ramiro Lacci](https://www.linkedin.com/)
+- **Portfolio**: [Live Demo](https://ramirolacci.com)
+- **Work with me**: Feel free to reach out via the contact form in the app!
+
+<p align="center">
+  Developed with ❤️ by <strong>Ramiro Lacci</strong>
+</p>
+

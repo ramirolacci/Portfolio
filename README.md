@@ -6,12 +6,29 @@
     <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
     <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
     <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+    <img src="https://img.shields.io/badge/Cursor-%23000000?style=for-the-badge&logo=Cursor&logoColor=white" alt="Cursor" />
     <img src="https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=white" alt="GSAP" />
-    <img src="https://img.shields.io/badge/i18next-26A69A?style=for-the-badge&logo=i18next&logoColor=white" alt="i18next" />
   </p>
 </div>
 
 ---
+
+## 🖼️ Project Showcase
+
+<div align="center">
+  <img src="README_assets/home.png" alt="Home Section" width="100%" />
+  <br>
+  <img src="README_assets/skills.png" alt="Skills Section" width="100%" />
+  <br>
+  <img src="README_assets/services.png" alt="Services Section" width="100%" />
+  <br>
+  <img src="README_assets/projects.png" alt="Projects Section" width="100%" />
+  <br>
+  <img src="README_assets/contact.png" alt="Contact Section" width="100%" />
+</div>
+
+---
+
 
 ## ✨ Overview
 

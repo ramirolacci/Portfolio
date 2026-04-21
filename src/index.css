@@ -200,6 +200,19 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    outline: none;
+}
+
+.flags:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.flags:active {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
 }
 
 .flags__item {

@@ -16,15 +16,18 @@
 ## 🖼️ Project Showcase
 
 <div align="center">
-  <img src="README_assets/home.png" alt="Home Section" width="100%" />
-  <br>
-  <img src="README_assets/skills.png" alt="Skills Section" width="100%" />
-  <br>
-  <img src="README_assets/services.png" alt="Services Section" width="100%" />
-  <br>
-  <img src="README_assets/projects.png" alt="Projects Section" width="100%" />
-  <br>
-  <img src="README_assets/contact.png" alt="Contact Section" width="100%" />
+
+| | |
+| :---: | :---: |
+| <img src="README_assets/home.png" width="100%"> | <img src="README_assets/skills.png" width="100%"> |
+| *Pantalla Principal — Home Section* | *Habilidades — Skills Timeline* |
+| <img src="README_assets/services.png" width="100%"> | <img src="README_assets/projects.png" width="100%"> |
+| *Servicios — Code Editor Simulator* | *Proyectos — Featured Works* |
+
+<img src="README_assets/contact.png" width="49%">
+<br>
+*Contacto — Get in touch*
+
 </div>
 
 ---

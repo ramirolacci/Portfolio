@@ -71,9 +71,9 @@ const Projects: React.FC = () => {
                         <div key={`${project.id}-${index}`} className="proyect-item">
                             <img src={project.image} alt={project.title} loading="lazy" />
                             <h2>{project.title}</h2>
-                            <div className="rating">
-                                {[...Array(5)].map((_, i) => (
-                                    <i key={i} className='bx bxs-star star'></i>
+                            <div className="tech-icons">
+                                {project.technologies?.map((tech, i) => (
+                                    <i key={i} className={`bx ${tech} tech-icon`}></i>
                                 ))}
                             </div>
                             <p>{t(project.translationKey)}</p>

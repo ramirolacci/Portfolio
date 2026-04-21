@@ -11,6 +11,7 @@ export const PROJECTS = [
         demo: "https://kiruki-makeit.netlify.app/",
         repo: "https://github.com/ramirolacci/Kiruki-Make-It-Happen",
         translationKey: "project1_desc",
+        technologies: ["bxl-html5", "bxl-css3", "bxl-javascript"]
     },
     {
         id: 2,
@@ -19,6 +20,7 @@ export const PROJECTS = [
         demo: "https://bexc.netlify.app/#home",
         repo: "https://github.com/ramirolacci/Bexc2.0-Gym",
         translationKey: "project2_desc",
+        technologies: ["bxl-react", "bxl-bootstrap", "bxl-javascript"]
     },
     {
         id: 3,
@@ -27,6 +29,7 @@ export const PROJECTS = [
         demo: "https://rune-rental-car.netlify.app/",
         repo: "https://github.com/ramirolacci/Rune-Rental-Car",
         translationKey: "project3_desc",
+        technologies: ["bxl-react", "bxl-typescript", "bxl-css3"]
     },
     {
         id: 4,
@@ -35,6 +38,7 @@ export const PROJECTS = [
         demo: "https://www.migusto.com.ar/tools/rooms/",
         repo: "https://github.com/ramirolacci/RR-RemindersRoomsAPP",
         translationKey: "project_reminders_desc",
+        technologies: ["bxl-react", "bxl-typescript", "bxl-nodejs"]
     },
     {
         id: 5,
@@ -44,6 +48,7 @@ export const PROJECTS = [
         repo: "https://github.com/ramirolacci/Mi-Gusto-x-Doritos-Flamin-Hot",
         translationKey: "project5_desc",
         extra: true,
+        technologies: ["bxl-html5", "bxl-css3", "bxl-javascript", "bx-bolt"]
     },
     {
         id: 6,
@@ -53,6 +58,7 @@ export const PROJECTS = [
         repo: "https://github.com/ramirolacci/QRgenPRO",
         translationKey: "project_qr_desc",
         extra: true,
+        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css"]
     },
     {
         id: 7,
@@ -62,6 +68,7 @@ export const PROJECTS = [
         repo: "https://github.com/ramirolacci/MiGusto-Games",
         translationKey: "project_games_desc",
         extra: true,
+        technologies: ["bxl-react", "bxl-typescript", "bx-joystick"]
     },
     {
         id: 8,
@@ -71,6 +78,7 @@ export const PROJECTS = [
         repo: "https://github.com/ramirolacci/GoldenTickets",
         translationKey: "project_golden_desc",
         extra: true,
+        technologies: ["bxl-react", "bxl-typescript", "bxl-php"]
     }
 ];
 

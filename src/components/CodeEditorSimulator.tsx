@@ -17,21 +17,21 @@ const CodeEditorSimulator: React.FC = () => {
             const title = t(titleKey);
             const desc = t(descKey);
             const detailLines = details
-                .map((d, i) => `  "${t(d)}"${i < details.length - 1 ? ',' : ''}`)
+                .map((d, i) => `    "<span class="code-string">${t(d)}</span>"${i < details.length - 1 ? ',' : ''}`)
                 .join('\n');
 
             return (
-                `/**\n` +
+                `<span class="code-comment">/**\n` +
                 ` * ${title}\n` +
                 ` *\n` +
                 ` * ${desc}\n` +
-                ` */\n` +
-                `const ${fnName} = {\n` +
-                `  title: "${title}",\n` +
-                `  details: [\n` +
+                ` */</span>\n` +
+                `<span class="code-keyword">const</span> <span class="code-function">${fnName}</span> = <span class="code-bracket">{</span>\n` +
+                `  <span class="code-property">title</span>: "<span class="code-string">${title}</span>",\n` +
+                `  <span class="code-property">details</span>: <span class="code-bracket">[</span>\n` +
                 detailLines + '\n' +
-                `  ]\n` +
-                `};`
+                `  <span class="code-bracket">]</span>\n` +
+                `<span class="code-bracket">}</span>;`
             );
         };
 
@@ -72,6 +72,7 @@ const CodeEditorSimulator: React.FC = () => {
                 loop: true,
                 showCursor: true,
                 cursorChar: '█',
+                contentType: 'html',
             });
         }
 

@@ -1150,6 +1150,15 @@ img.db-badge {
     }
 }
 
+/* ── Code Syntax Highlighting ── */
+.code-keyword { color: #c678dd; font-weight: 600; }
+.code-variable { color: #e06c75; }
+.code-string { color: #98c379; }
+.code-comment { color: #5c6370; font-style: italic; }
+.code-property { color: #d19a66; }
+.code-bracket { color: #abb2bf; }
+.code-function { color: #61afef; }
+
 .proyects {
     background: var(--second-bg-color);
 }

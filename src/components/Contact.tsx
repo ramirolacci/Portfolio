@@ -74,17 +74,17 @@ const Contact: React.FC = () => {
             <form action="" ref={formRef}>
                 <div className="input-group">
                     <div className="input-box">
-                        <input type="text" placeholder={t('full_name_input')} required />
-                        <input type="email" placeholder={t('email_input')} required />
+                        <input type="text" name="full_name" id="full_name" autoComplete="name" placeholder={t('full_name_input')} required />
+                        <input type="email" name="email" id="email" autoComplete="email" placeholder={t('email_input')} required />
                     </div>
                     <div className="input-box">
-                        <input type="tel" placeholder={t('phone_number_input')} />
-                        <input type="text" placeholder={t('subject_input')} />
+                        <input type="tel" name="phone_number" id="phone_number" autoComplete="tel" placeholder={t('phone_number_input')} />
+                        <input type="text" name="subject" id="subject" autoComplete="off" placeholder={t('subject_input')} />
                     </div>
                 </div>
 
                 <div className="input-group-2">
-                    <textarea cols={30} rows={10} placeholder={t('your_message_input')} required></textarea>
+                    <textarea name="message" id="message" cols={30} rows={10} placeholder={t('your_message_input')} required></textarea>
                     <input type="submit" value={t('send_message_btn')} className="btn" />
                 </div>
             </form>

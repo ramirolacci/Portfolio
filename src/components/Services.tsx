@@ -21,33 +21,35 @@ const Services: React.FC = () => {
         const container = containerRef.current;
         if (!section || !heading || !container) return;
 
-        const items = container.querySelectorAll('.service-box, .code-editor-wrapper');
+        const ctx = gsap.context(() => {
+            const items = container.querySelectorAll('.service-box, .code-editor-wrapper');
 
-        // Heading fade in
-        gsap.fromTo(heading,
-            { opacity: 0, y: -40 },
-            {
-                opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-                scrollTrigger: { trigger: heading, start: 'top 85%' }
-            }
-        );
-
-        // Content fade up
-        items.forEach((item, i) => {
-            const fromX = i % 2 === 0 ? -60 : 60;
-            gsap.fromTo(item,
-                { opacity: 0, x: fromX, scale: 0.95 },
+            // Heading fade in
+            gsap.fromTo(heading,
+                { opacity: 0, y: -40 },
                 {
-                    opacity: 1, x: 0, scale: 1,
-                    duration: 0.7, ease: 'power2.out',
-                    delay: (i % 2) * 0.15,
-                    scrollTrigger: { trigger: item, start: 'top 88%' }
+                    opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+                    scrollTrigger: { trigger: heading, start: 'top 85%' }
                 }
             );
-        });
 
-        return () => { ScrollTrigger.getAll().forEach((st: ScrollTrigger) => st.kill()); };
-    }, [i18n.language]);
+            // Content fade up
+            items.forEach((item, i) => {
+                const fromX = i % 2 === 0 ? -60 : 60;
+                gsap.fromTo(item,
+                    { opacity: 0, x: fromX, scale: 0.95 },
+                    {
+                        opacity: 1, x: 0, scale: 1,
+                        duration: 0.7, ease: 'power2.out',
+                        delay: (i % 2) * 0.15,
+                        scrollTrigger: { trigger: item, start: 'top 88%' }
+                    }
+                );
+            });
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, [t]);
 
     return (
         <section className="services" id="services" ref={sectionRef}>

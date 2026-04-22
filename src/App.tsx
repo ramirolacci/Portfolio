@@ -22,20 +22,22 @@ const App: React.FC = () => {
     const footer = footerRef.current;
     if (!footer) return;
 
-    const social = footer.querySelector('.social');
-    const list = footer.querySelector('.list');
-    const copyright = footer.querySelector('.copyright');
+    const ctx = gsap.context(() => {
+      const social = footer.querySelector('.social');
+      const list = footer.querySelector('.list');
+      const copyright = footer.querySelector('.copyright');
 
-    const tl = gsap.timeline({
-      scrollTrigger: { trigger: footer, start: 'top 90%' }
-    });
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: footer, start: 'top 90%' }
+      });
 
-    tl.fromTo(social, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' })
-      .fromTo(list, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.3')
-      .fromTo(copyright, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power2.out' }, '-=0.2');
+      tl.fromTo(social, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' })
+        .fromTo(list, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.3')
+        .fromTo(copyright, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power2.out' }, '-=0.2');
+    }, footerRef);
 
-    return () => { ScrollTrigger.getAll().forEach((st: ScrollTrigger) => st.kill()); };
-  }, []);
+    return () => ctx.revert();
+  }, [t]);
 
   return (
     <div className="portfolio">

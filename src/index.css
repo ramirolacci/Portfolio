@@ -1043,7 +1043,7 @@ img.db-badge {
 }
 
 .code-editor {
-    background: #1e1e2e;
+    background: #282c34;
     border-radius: 12px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.06);
     width: 100%;
@@ -1055,7 +1055,7 @@ img.db-badge {
 }
 
 .editor-titlebar {
-    background: #181825;
+    background: #21252b;
     padding: 1rem 1.6rem;
     display: flex;
     align-items: center;
@@ -1109,7 +1109,7 @@ img.db-badge {
     flex-direction: column;
     align-items: flex-end;
     padding: 0 1.4rem;
-    color: #585b70;
+    color: #585b70; /* Original grey color */
     user-select: none;
     min-width: 5rem;
     font-size: 1.35rem;
@@ -1120,7 +1120,7 @@ img.db-badge {
 
 .typed-output {
     flex: 1;
-    color: #cdd6f4;
+    color: #abb2bf; /* Default text color (Atom One Dark) */
     white-space: pre-wrap;
     word-break: break-word;
     margin: 0;
@@ -1151,7 +1151,7 @@ img.db-badge {
 }
 
 /* ── Code Syntax Highlighting ── */
-.code-keyword { color: #c678dd; font-weight: 600; }
+.code-keyword { color: #c678dd; }
 .code-variable { color: #e06c75; }
 .code-string { color: #98c379; }
 .code-comment { color: #5c6370; font-style: italic; }

@@ -58,7 +58,10 @@ const Navbar: React.FC = () => {
 
     return (
         <header className="header" ref={headerRef}>
-            <a href="#home" className="logo">Ramiro <span>Lacci</span></a>
+            <a href="#home" className="logo">
+                <img src="/logo/logo_dev.png" alt="Logo" className="navbar-logo" />
+                Ramiro <span>Lacci</span>
+            </a>
 
             <div className="nav-container">
                 <div id="menu-icon" className={isMenuOpen ? 'active' : ''} onClick={() => setIsMenuOpen(!isMenuOpen)}>

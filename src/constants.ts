@@ -84,7 +84,7 @@ export const PROJECTS = [
         id: 9,
         title: "WaveFrame Studio",
         image: "/images/waveframe.png",
-        demo: "https://waveframe.studio/",
+        demo: "https://waveframe.com.ar/",
         repo: "https://github.com/ramirolacci/WaveFrame-Studio",
         translationKey: "project_waveframe_desc",
         technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css", "bx-cube"]
@@ -93,8 +93,8 @@ export const PROJECTS = [
         id: 10,
         title: "Photo Party",
         image: "/images/photoparty.png",
-        demo: "https://photoparty.app/",
-        repo: "https://github.com/ramirolacci/Photo-Party",
+        demo: "https://mis15bianca-recuerdos.netlify.app/",
+        repo: "https://github.com/ramirolacci/PhotoPartyApp",
         translationKey: "project_photoparty_desc",
         technologies: ["bxl-react", "bxl-typescript", "bx-camera", "bx-video"]
     },
@@ -103,7 +103,7 @@ export const PROJECTS = [
         title: "Influencers Form",
         image: "/images/Influencers.png",
         demo: "https://www.migusto.com.ar/canjes/",
-        repo: "https://github.com/ramirolacci/Influencers-Form",
+        repo: "https://github.com/ramirolacci/InfluencersForm",
         translationKey: "project_influencers_desc",
         technologies: ["bxl-react", "bxl-typescript", "bxl-php", "bx-user-voice"]
     }

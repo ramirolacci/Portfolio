@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Projects: React.FC = () => {
     const { t } = useTranslation();
-    const [showAll, setShowAll] = useState(false);
+    const [visibleCount, setVisibleCount] = useState(4);
     const sectionRef = useRef<HTMLDivElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 895);
@@ -47,9 +47,17 @@ const Projects: React.FC = () => {
         });
 
         return () => ctx.revert();
-    }, [showAll, isMobile]);
+    }, [visibleCount, isMobile]);
 
-    const visibleProjects = (showAll || isMobile) ? PROJECTS : PROJECTS.filter(p => !p.extra);
+    const visibleProjects = isMobile ? PROJECTS : PROJECTS.slice(0, visibleCount);
+
+    const handleSeeMore = () => {
+        if (visibleCount >= PROJECTS.length) {
+            setVisibleCount(4);
+        } else {
+            setVisibleCount(prev => Math.min(prev + 4, PROJECTS.length));
+        }
+    };
 
     return (
         <section className="proyects" id="projects" ref={sectionRef}>
@@ -85,14 +93,16 @@ const Projects: React.FC = () => {
                     ))}
                 </div>
 
-                <div className="ver-mas-container" style={{ textAlign: 'center', marginTop: '2rem' }}>
-                    <button
-                        className="btn ver-mas-btn"
-                        onClick={() => setShowAll(!showAll)}
-                    >
-                        {showAll ? t('ver-menos', 'See Less') : t('ver-mas', 'See More')}
-                    </button>
-                </div>
+                {!isMobile && (
+                    <div className="ver-mas-container" style={{ textAlign: 'center', marginTop: '2rem' }}>
+                        <button
+                            className="btn ver-mas-btn"
+                            onClick={handleSeeMore}
+                        >
+                            {visibleCount >= PROJECTS.length ? t('ver-menos') : t('ver-mas')}
+                        </button>
+                    </div>
+                )}
             </div>
         </section>
     );

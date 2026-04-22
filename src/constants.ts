@@ -79,6 +79,33 @@ export const PROJECTS = [
         translationKey: "project_golden_desc",
         extra: true,
         technologies: ["bxl-react", "bxl-typescript", "bxl-php"]
+    },
+    {
+        id: 9,
+        title: "WaveFrame Studio",
+        image: "/images/waveframe.png",
+        demo: "https://waveframe.studio/",
+        repo: "https://github.com/ramirolacci/WaveFrame-Studio",
+        translationKey: "project_waveframe_desc",
+        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css", "bx-cube"]
+    },
+    {
+        id: 10,
+        title: "Photo Party",
+        image: "/images/photoparty.png",
+        demo: "https://photoparty.app/",
+        repo: "https://github.com/ramirolacci/Photo-Party",
+        translationKey: "project_photoparty_desc",
+        technologies: ["bxl-react", "bxl-typescript", "bx-camera", "bx-video"]
+    },
+    {
+        id: 11,
+        title: "Influencers Form",
+        image: "/images/Influencers.png",
+        demo: "https://www.migusto.com.ar/canjes/",
+        repo: "https://github.com/ramirolacci/Influencers-Form",
+        translationKey: "project_influencers_desc",
+        technologies: ["bxl-react", "bxl-typescript", "bxl-php", "bx-user-voice"]
     }
 ];
 

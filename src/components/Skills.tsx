@@ -13,6 +13,7 @@ const Skills: React.FC = () => {
     useEffect(() => {
         const section = sectionRef.current;
         if (!section) return;
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         const ctx = gsap.context(() => {
             const heading = section.querySelector('.heading');
@@ -20,7 +21,7 @@ const Skills: React.FC = () => {
             const dots = section.querySelectorAll('.timeline-dot');
 
             // Heading
-            if (heading) {
+            if (heading && !prefersReduced) {
                 gsap.fromTo(heading,
                     { opacity: 0, y: -40, scale: 0.95 },
                     {
@@ -33,6 +34,7 @@ const Skills: React.FC = () => {
 
             // Timeline dots pop in
             dots.forEach((dot, i) => {
+                if (prefersReduced) return;
                 gsap.fromTo(dot,
                     { opacity: 0, scale: 0 },
                     {
@@ -47,7 +49,7 @@ const Skills: React.FC = () => {
             // Timeline items alternating left/right
             timelineItems.forEach((item, i) => {
                 const card = item.querySelector('.skills-timeline-content');
-                if (!card) return;
+                if (!card || prefersReduced) return;
                 const fromX = i % 2 === 0 ? -80 : 80;
 
                 gsap.fromTo(card,
@@ -62,17 +64,50 @@ const Skills: React.FC = () => {
                 // Chips stagger within card
                 const chips = card.querySelectorAll('.skill-chip');
                 gsap.fromTo(chips,
-                    { opacity: 0, scale: 0.7 },
+                    { opacity: 0, scale: 0.6, y: 12 },
                     {
-                        opacity: 1, scale: 1,
-                        duration: 0.4, stagger: 0.05, ease: 'back.out(1.3)',
+                        opacity: 1, scale: 1, y: 0,
+                        duration: 0.45, stagger: 0.055, ease: 'back.out(1.5)',
                         scrollTrigger: { trigger: card, start: 'top 85%' }
                     }
                 );
             });
         }, sectionRef);
 
-        return () => ctx.revert();
+        // ── Hover: glow pulse + scale on skill chips ──
+        const chips = section.querySelectorAll<HTMLElement>('.skill-chip');
+        const cleanups: (() => void)[] = [];
+
+        chips.forEach((chip) => {
+            const onEnter = () => {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                gsap.to(chip, {
+                    scale: 1.12,
+                    boxShadow: '0 0 16px 4px rgba(0,255,238,0.55)',
+                    duration: 0.22,
+                    ease: 'power2.out',
+                });
+            };
+            const onLeave = () => {
+                gsap.to(chip, {
+                    scale: 1,
+                    boxShadow: '0 0 0 2px rgba(255,255,255,0.08) inset',
+                    duration: 0.3,
+                    ease: 'power2.inOut',
+                });
+            };
+            chip.addEventListener('mouseenter', onEnter);
+            chip.addEventListener('mouseleave', onLeave);
+            cleanups.push(() => {
+                chip.removeEventListener('mouseenter', onEnter);
+                chip.removeEventListener('mouseleave', onLeave);
+            });
+        });
+
+        return () => {
+            ctx.revert();
+            cleanups.forEach(fn => fn());
+        };
     }, [t]);
 
     return (
@@ -91,7 +126,11 @@ const Skills: React.FC = () => {
                                 </h3>
                                 <div className="category-content">
                                     {category.items.map((skill, sIdx) => (
-                                        <div key={sIdx} className={`skill-chip badge--${skill.badge}`}>
+                                        <div
+                                            key={sIdx}
+                                            className={`skill-chip badge--${skill.badge}`}
+                                            data-tooltip={skill.name}
+                                        >
                                             <i className={`bx ${skill.icon}`}></i>
                                             <span>{skill.name}</span>
                                         </div>

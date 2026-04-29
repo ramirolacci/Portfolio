@@ -22,7 +22,6 @@ const Projects: React.FC = () => {
     useEffect(() => {
         if (isMobile && wrapperRef.current) {
             const el = wrapperRef.current;
-            // Delay a bit to ensure full scrollWidth is available
             const timeout = setTimeout(() => {
                 el.scrollLeft = el.scrollWidth / 3;
             }, 50);
@@ -64,9 +63,9 @@ const Projects: React.FC = () => {
             <div className="proyects-box">
                 <h2 className="heading">{t('projects_heading')}</h2>
 
-                <div 
-                    className="wrapper" 
-                    ref={wrapperRef} 
+                <div
+                    className="wrapper"
+                    ref={wrapperRef}
                     onScroll={(e) => {
                         if (!isMobile) return;
                         const el = e.currentTarget;

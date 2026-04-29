@@ -5,6 +5,7 @@ import Skills from './components/Skills';
 import Services from './components/Services';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import CursorTrail from './components/CursorTrail';
 import './index.css';
 import './i18n';
 import { gsap } from 'gsap';
@@ -41,6 +42,7 @@ const App: React.FC = () => {
 
   return (
     <div className="portfolio">
+      <CursorTrail />
       <Navbar />
       <main>
         <Hero />

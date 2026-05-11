@@ -7,7 +7,7 @@ import CodeEditorSimulator from './CodeEditorSimulator';
 gsap.registerPlugin(ScrollTrigger);
 
 const Services: React.FC = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const sectionRef = useRef<HTMLDivElement>(null);
     const headingRef = useRef<HTMLHeadingElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);

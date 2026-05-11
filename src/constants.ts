@@ -5,6 +5,44 @@ export const EMAIL = "ramiroalejandolacci19@gmail.com";
 
 export const PROJECTS = [
     {
+        id: 9,
+        title: "WaveFrame Studio",
+        image: "/images/waveframe.png",
+        demo: "https://waveframe.com.ar/",
+        repo: "https://github.com/ramirolacci/WaveFrame-Studio",
+        translationKey: "project_waveframe_desc",
+        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css", "bx-cube"]
+    },
+    {
+        id: 5,
+        title: "Mi Gusto Flamin' Hot",
+        image: "/images/project5.png",
+        demo: "https://www.migusto.com.ar/crunchy/",
+        repo: "https://github.com/ramirolacci/Mi-Gusto-x-Doritos-Flamin-Hot",
+        translationKey: "project5_desc",
+        extra: true,
+        technologies: ["bxl-html5", "bxl-css3", "bxl-javascript", "bx-bolt"]
+    },
+    {
+        id: 10,
+        title: "Photo Party",
+        image: "/images/photoparty.png",
+        demo: "https://mis15bianca-recuerdos.netlify.app/",
+        repo: "https://github.com/ramirolacci/PhotoPartyApp",
+        translationKey: "project_photoparty_desc",
+        technologies: ["bxl-react", "bxl-typescript", "bx-camera", "bx-video"]
+    },
+    {
+        id: 6,
+        title: "QR Generator",
+        image: "/images/QR Generator.png",
+        demo: "https://www.migusto.com.ar/tools/QR/",
+        repo: "https://github.com/ramirolacci/QRgenPRO",
+        translationKey: "project_qr_desc",
+        extra: true,
+        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css"]
+    },
+    {
         id: 1,
         title: "Kiruki Make It Happen",
         image: "/images/project1.png",
@@ -41,26 +79,6 @@ export const PROJECTS = [
         technologies: ["bxl-react", "bxl-typescript", "bxl-nodejs"]
     },
     {
-        id: 5,
-        title: "Mi Gusto Flamin' Hot",
-        image: "/images/project5.png",
-        demo: "https://www.migusto.com.ar/crunchy/",
-        repo: "https://github.com/ramirolacci/Mi-Gusto-x-Doritos-Flamin-Hot",
-        translationKey: "project5_desc",
-        extra: true,
-        technologies: ["bxl-html5", "bxl-css3", "bxl-javascript", "bx-bolt"]
-    },
-    {
-        id: 6,
-        title: "QR Generator",
-        image: "/images/QR Generator.png",
-        demo: "https://www.migusto.com.ar/tools/QR/",
-        repo: "https://github.com/ramirolacci/QRgenPRO",
-        translationKey: "project_qr_desc",
-        extra: true,
-        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css"]
-    },
-    {
         id: 7,
         title: "Mi Gusto Games",
         image: "/images/Games.png",
@@ -79,24 +97,6 @@ export const PROJECTS = [
         translationKey: "project_golden_desc",
         extra: true,
         technologies: ["bxl-react", "bxl-typescript", "bxl-php"]
-    },
-    {
-        id: 9,
-        title: "WaveFrame Studio",
-        image: "/images/waveframe.png",
-        demo: "https://waveframe.com.ar/",
-        repo: "https://github.com/ramirolacci/WaveFrame-Studio",
-        translationKey: "project_waveframe_desc",
-        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css", "bx-cube"]
-    },
-    {
-        id: 10,
-        title: "Photo Party",
-        image: "/images/photoparty.png",
-        demo: "https://mis15bianca-recuerdos.netlify.app/",
-        repo: "https://github.com/ramirolacci/PhotoPartyApp",
-        translationKey: "project_photoparty_desc",
-        technologies: ["bxl-react", "bxl-typescript", "bx-camera", "bx-video"]
     },
     {
         id: 11,

@@ -1,6 +1,6 @@
 <div align="center">
   <h1>🚀 Ramiro Lacci | Web Portfolio</h1>
-  <p><strong>A modern, high-performance, and visually stunning web architecture showcase...</strong></p>
+  <p><strong>A modern, high-performance, and visually stunning web architecture showcase.</strong></p>
 
   <p>
     <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />

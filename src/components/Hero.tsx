@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useEffect } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
 import { GITHUB_REPO, LINKEDIN_PROFILE, WHATSAPP_LINK } from '../constants';
@@ -7,8 +7,6 @@ const Hero: React.FC = () => {
     const { t } = useTranslation();
     const heroRef = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
-    const ctaRef = useRef<HTMLAnchorElement>(null);
-
     // ── Entrance animations ──
     useLayoutEffect(() => {
         const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -34,31 +32,6 @@ const Hero: React.FC = () => {
         return () => ctx.revert();
     }, []);
 
-    // ── Magnetic pull on CTA button ──
-    useEffect(() => {
-        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (prefersReduced) return;
-        const btn = ctaRef.current;
-        if (!btn) return;
-
-        const handleMove = (e: MouseEvent) => {
-            const rect = btn.getBoundingClientRect();
-            const cx = rect.left + rect.width / 2;
-            const cy = rect.top + rect.height / 2;
-            gsap.to(btn, { x: (e.clientX - cx) * 0.3, y: (e.clientY - cy) * 0.3, duration: 0.3, ease: 'power2.out' });
-        };
-        const handleLeave = () => {
-            gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' });
-        };
-
-        btn.addEventListener('mousemove', handleMove);
-        btn.addEventListener('mouseleave', handleLeave);
-        return () => {
-            btn.removeEventListener('mousemove', handleMove);
-            btn.removeEventListener('mouseleave', handleLeave);
-        };
-    }, []);
-
     return (
         <section className="home" id="home" ref={heroRef}>
             <div className="home-content hero-text">
@@ -81,8 +54,7 @@ const Hero: React.FC = () => {
                 <div className="btn-group">
                     <a
                         href={`mailto:ramiroalejandolacci19@gmail.com`}
-                        className="btn btn-magnetic"
-                        ref={ctaRef}
+                        className="btn"
                     >
                         {t('hire_btn')}
                     </a>

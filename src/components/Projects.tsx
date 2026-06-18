@@ -11,6 +11,8 @@ const Projects: React.FC = () => {
     const [visibleCount, setVisibleCount] = useState(4);
     const sectionRef = useRef<HTMLDivElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
+    const isTouchingRef = useRef(false);
+    const scrollResetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 895);
 
     useEffect(() => {
@@ -58,6 +60,37 @@ const Projects: React.FC = () => {
         }
     };
 
+    const resetInfiniteScroll = () => {
+        if (!isMobile || isTouchingRef.current) return;
+
+        const el = wrapperRef.current;
+        if (!el) return;
+
+        const itemWidth = el.scrollWidth / 3;
+        if (itemWidth <= 0) return;
+
+        if (el.scrollLeft >= itemWidth * 2) el.scrollLeft -= itemWidth;
+        if (el.scrollLeft <= 0) el.scrollLeft += itemWidth;
+    };
+
+    const handleWrapperScroll = () => {
+        if (!isMobile) return;
+
+        if (scrollResetTimerRef.current) {
+            clearTimeout(scrollResetTimerRef.current);
+        }
+
+        scrollResetTimerRef.current = setTimeout(resetInfiniteScroll, 120);
+    };
+
+    useEffect(() => {
+        return () => {
+            if (scrollResetTimerRef.current) {
+                clearTimeout(scrollResetTimerRef.current);
+            }
+        };
+    }, []);
+
     return (
         <section className="proyects" id="projects" ref={sectionRef}>
             <div className="proyects-box">
@@ -66,13 +99,13 @@ const Projects: React.FC = () => {
                 <div
                     className="wrapper"
                     ref={wrapperRef}
-                    onScroll={(e) => {
-                        if (!isMobile) return;
-                        const el = e.currentTarget;
-                        const itemWidth = el.scrollWidth / 3;
-                        if (el.scrollLeft >= itemWidth * 2) el.scrollLeft -= itemWidth;
-                        if (el.scrollLeft <= 0) el.scrollLeft += itemWidth;
+                    onScroll={handleWrapperScroll}
+                    onTouchStart={() => { isTouchingRef.current = true; }}
+                    onTouchEnd={() => {
+                        isTouchingRef.current = false;
+                        resetInfiniteScroll();
                     }}
+                    onTouchCancel={() => { isTouchingRef.current = false; }}
                 >
                     {(isMobile ? [...PROJECTS, ...PROJECTS, ...PROJECTS] : visibleProjects).map((project, index) => (
                         <div key={`${project.id}-${index}`} className="proyect-item">

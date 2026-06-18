@@ -180,6 +180,9 @@ textarea:focus:not(:hover):not(:active) {
     z-index: 1001;
     transition: 0.3s ease;
     display: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
 }
 
 #menu-icon:hover {
@@ -1448,6 +1451,7 @@ img.db-badge {
         justify-content: flex-start;
         width: 100%;
         scroll-behavior: auto; /* Required for seamless loop! */
+        touch-action: pan-x;
     }
 
     .proyects .wrapper::-webkit-scrollbar {
@@ -1488,6 +1492,7 @@ img.db-badge {
         position: relative;
         width: 3.6rem;
         height: 3.6rem;
+        touch-action: manipulation;
     }
 
     .menu-icon-inner,
@@ -1516,10 +1521,11 @@ img.db-badge {
     }
 
     .navbar {
+        display: none;
         position: absolute;
-        top: 100%;
+        top: calc(100% + 1rem);
         right: 0;
-        width: 50%;
+        width: min(28rem, 80vw);
         padding: 1rem 3%;
         background: rgba(0, 0, 0, 0.95);
         backdrop-filter: blur(20px);
@@ -1533,10 +1539,11 @@ img.db-badge {
         transform: translateY(-20px);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         pointer-events: none;
-        z-index: 999;
+        z-index: 1002;
     }
 
     .navbar.active {
+        display: block;
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
@@ -1548,6 +1555,7 @@ img.db-badge {
         font-size: 2rem;
         margin: 3rem 0;
         color: white;
+        touch-action: manipulation;
     }
 
     .home {
@@ -1557,6 +1565,7 @@ img.db-badge {
     }
 
     .nav-container {
+        position: relative;
         align-items: center;
     }
 
@@ -1636,9 +1645,31 @@ img.db-badge {
    MOTION PREMIUM 2026 — ADD-ONS
    ══════════════════════════════════════════════ */
 
-/* ── Custom cursor: hide system cursor on desktop ── */
-@media (hover: hover) and (pointer: fine) {
-    * { cursor: none !important; }
+/* ── Mobile touch: reliable taps on links and buttons ── */
+@media (hover: none), (pointer: coarse) {
+    a,
+    button,
+    .btn,
+    #menu-icon,
+    .flags {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: rgba(0, 255, 238, 0.2);
+    }
+
+    .proyects .btn-group {
+        position: relative;
+        z-index: 2;
+    }
+
+    .proyects .btn-group .btn {
+        min-height: 4.4rem;
+        min-width: 10rem;
+    }
+
+    .social-icons a {
+        min-width: 4.5rem;
+        min-height: 4.5rem;
+    }
 }
 
 /* ── Magnetic CTA ── */
@@ -1735,5 +1766,4 @@ img.db-badge {
     .skill-chip::after {
         transition: none;
     }
-    * { cursor: auto !important; }
-}
+}

@@ -64,10 +64,17 @@ const Navbar: React.FC = () => {
             </a>
 
             <div className="nav-container">
-                <div id="menu-icon" className={isMenuOpen ? 'active' : ''} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                <button
+                    type="button"
+                    id="menu-icon"
+                    className={isMenuOpen ? 'active' : ''}
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+                    aria-expanded={isMenuOpen}
+                >
                     <Menu className="menu-icon-inner" size={36} />
                     <X className="x-icon-inner" size={36} />
-                </div>
+                </button>
 
                 <nav className={`navbar ${isMenuOpen ? 'active' : ''}`}>
                     {navItems.map(item => (

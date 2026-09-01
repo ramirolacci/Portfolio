@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { EMAIL } from '../constants';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,7 +10,9 @@ const Contact: React.FC = () => {
     const { t } = useTranslation();
     const sectionRef = useRef<HTMLDivElement>(null);
     const formRef = useRef<HTMLFormElement>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+    const [errorMsg, setErrorMsg] = useState('');
 
     // Scroll reveal
     useEffect(() => {
@@ -78,45 +81,77 @@ const Contact: React.FC = () => {
         return () => cleanups.forEach(fn => fn());
     }, []);
 
-    // Submit success animation
-    const handleSubmit = (e: React.FormEvent) => {
+    // Form submit logic
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const form = formRef.current;
         if (!form) return;
 
-        const successEl = document.querySelector('.contact-success');
-        if (!successEl) return;
+        setIsSubmitting(true);
+        setErrorMsg('');
 
-        gsap.timeline()
-            .to(form, { opacity: 0, y: -20, duration: 0.35, ease: 'power2.in' })
-            .set(form, { display: 'none' })
-            .fromTo(successEl,
-                { display: 'flex', opacity: 0, scale: 0.8 },
-                { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.7)' }
-            );
+        const formData = new FormData(form);
+        formData.append("access_key", "46d0a7a7-5ec9-482a-a9a7-975949514781"); // Public Web3Forms key for direct portfolio delivery
+        formData.append("to_email", EMAIL);
 
-        setSubmitted(true);
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
 
-        // Reset after 3s
-        setTimeout(() => {
-            gsap.timeline()
-                .to(successEl, { opacity: 0, scale: 0.9, duration: 0.3 })
-                .set(successEl, { display: 'none' })
-                .set(form, { display: 'flex', opacity: 0 })
-                .to(form, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
-            form.reset();
-            setSubmitted(false);
-        }, 3000);
+            const res = await response.json();
+
+            if (res.success || response.ok) {
+                const successEl = document.querySelector('.contact-success');
+                if (successEl) {
+                    gsap.timeline()
+                        .to(form, { opacity: 0, y: -20, duration: 0.35, ease: 'power2.in' })
+                        .set(form, { display: 'none' })
+                        .fromTo(successEl,
+                            { display: 'flex', opacity: 0, scale: 0.8 },
+                            { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.7)' }
+                        );
+                }
+                setSubmitted(true);
+                form.reset();
+
+                setTimeout(() => {
+                    if (successEl) {
+                        gsap.timeline()
+                            .to(successEl, { opacity: 0, scale: 0.9, duration: 0.3 })
+                            .set(successEl, { display: 'none' })
+                            .set(form, { display: 'flex', opacity: 0 })
+                            .to(form, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
+                    }
+                    setSubmitted(false);
+                }, 4000);
+            } else {
+                throw new Error("Submit failed");
+            }
+        } catch {
+            // Fallback: direct mailto trigger
+            const name = (form.querySelector('#full_name') as HTMLInputElement)?.value || '';
+            const email = (form.querySelector('#email') as HTMLInputElement)?.value || '';
+            const subject = (form.querySelector('#subject') as HTMLInputElement)?.value || 'Contacto desde Portafolio';
+            const message = (form.querySelector('#message') as HTMLTextAreaElement)?.value || '';
+
+            const mailtoUrl = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`)}`;
+            window.location.href = mailtoUrl;
+            setSubmitted(true);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
         <section className="contact" id="contact" ref={sectionRef}>
             <h2 className="heading">
                 <span style={{ color: 'white' }}>{t('contact_me_heading')}</span>
-                <span id="minuscula">{t('minuscula')}</span>
+                <span className="minuscula-span">{t('minuscula')}</span>
             </h2>
 
-            <form action="" ref={formRef} onSubmit={handleSubmit}>
+            <form ref={formRef} onSubmit={handleSubmit}>
                 <div className="input-group">
                     <div className="input-box">
                         <input type="text" name="full_name" id="full_name" autoComplete="name" placeholder={t('full_name_input')} required />
@@ -128,16 +163,22 @@ const Contact: React.FC = () => {
                     </div>
                 </div>
                 <div className="input-group-2">
-                    <textarea name="message" id="message" cols={30} rows={10} placeholder={t('your_message_input')} required></textarea>
-                    <input type="submit" value={submitted ? '✓' : t('send_message_btn')} className="btn contact-submit-btn" />
+                    <textarea name="message" id="message" cols={30} rows={8} placeholder={t('your_message_input')} required></textarea>
+                    <input
+                        type="submit"
+                        disabled={isSubmitting}
+                        value={isSubmitting ? t('sending_message_btn') : (submitted ? '✓' : t('send_message_btn'))}
+                        className="btn contact-submit-btn"
+                    />
                 </div>
+                {errorMsg && <p className="contact-error">{errorMsg}</p>}
             </form>
 
             {/* Success state */}
             <div className="contact-success" style={{ display: 'none' }}>
                 <div className="success-icon">✓</div>
                 <h3>{t('send_message_btn')} ✓</h3>
-                <p>¡Mensaje enviado! Te contactaré pronto 🚀</p>
+                <p>¡Mensaje enviado con éxito! Te responderé a la brevedad 🚀</p>
             </div>
         </section>
     );

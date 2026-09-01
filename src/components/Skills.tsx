@@ -111,8 +111,8 @@ const Skills: React.FC = () => {
     }, [t]);
 
     return (
-        <section className="education" id="education" ref={sectionRef}>
-            <h2 className="heading">{t('education_heading')}</h2>
+        <section className="skills" id="skills" ref={sectionRef}>
+            <h2 className="heading">{t('skills_heading')}</h2>
 
             <div className="timeline-items">
                 {SKILLS.map((category, idx) => (

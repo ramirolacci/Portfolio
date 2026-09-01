@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
 
     const navItems = [
         { id: 'home', label: t('home_heading') },
-        { id: 'education', label: t('education_heading') },
+        { id: 'skills', label: t('skills_heading') },
         { id: 'services', label: t('services_heading') },
         { id: 'projects', label: t('projects_heading') },
         { id: 'contact', label: t('contact_heading') },
@@ -19,6 +19,7 @@ const Navbar: React.FC = () => {
 
     const changeLanguage = (lng: string) => {
         i18n.changeLanguage(lng);
+        document.documentElement.lang = lng;
     };
 
     // Entrance animation
@@ -40,12 +41,12 @@ const Navbar: React.FC = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            const sections = ['home', 'education', 'services', 'projects', 'contact'];
+            const sections = ['home', 'skills', 'services', 'projects', 'contact'];
             const current = sections.find(section => {
                 const element = document.getElementById(section);
                 if (element) {
                     const rect = element.getBoundingClientRect();
-                    return rect.top >= -150 && rect.top <= 150;
+                    return rect.top >= -150 && rect.top <= 250;
                 }
                 return false;
             });

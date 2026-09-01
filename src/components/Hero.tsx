@@ -1,12 +1,16 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
-import { GITHUB_REPO, LINKEDIN_PROFILE, WHATSAPP_LINK } from '../constants';
+import Typed from 'typed.js';
+import { GITHUB_REPO, LINKEDIN_PROFILE, WHATSAPP_LINK, EMAIL } from '../constants';
 
 const Hero: React.FC = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const heroRef = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
+    const textRef = useRef<HTMLSpanElement>(null);
+    const typedInstanceRef = useRef<Typed | null>(null);
+
     // ── Entrance animations ──
     useLayoutEffect(() => {
         const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -32,6 +36,54 @@ const Hero: React.FC = () => {
         return () => ctx.revert();
     }, []);
 
+    // ── Typing animation ──
+    useEffect(() => {
+        const el = textRef.current;
+        if (!el) return;
+
+        // Destroy previous typed instance if exists
+        if (typedInstanceRef.current) {
+            typedInstanceRef.current.destroy();
+            typedInstanceRef.current = null;
+        }
+
+        // Clear inner text and remove any duplicate cursor elements in parent
+        el.innerHTML = '';
+        const parent = el.parentElement;
+        if (parent) {
+            const cursors = parent.querySelectorAll('.typed-cursor');
+            cursors.forEach(c => c.remove());
+        }
+
+        const isEs = i18n.language.startsWith('es');
+        const strings = isEs
+            ? ['Frontend Developer', 'Full Stack Developer', 'Diseñador UI / UX', 'Desarrollador Web']
+            : ['Frontend Developer', 'Full Stack Developer', 'UI / UX Designer', 'Web Developer'];
+
+        const typed = new Typed(el, {
+            strings,
+            typeSpeed: 60,
+            backSpeed: 40,
+            backDelay: 1500,
+            startDelay: 300,
+            loop: true,
+            showCursor: true,
+            cursorChar: '|',
+        });
+
+        typedInstanceRef.current = typed;
+
+        return () => {
+            typed.destroy();
+            typedInstanceRef.current = null;
+            if (el) el.innerHTML = '';
+            if (parent) {
+                const cursors = parent.querySelectorAll('.typed-cursor');
+                cursors.forEach(c => c.remove());
+            }
+        };
+    }, [i18n.language]);
+
     return (
         <section className="home" id="home" ref={heroRef}>
             <div className="home-content hero-text">
@@ -39,21 +91,21 @@ const Hero: React.FC = () => {
                     <span style={{ color: 'white' }}>{t('greeting')}</span>
                     <span> Ramiro</span>
                 </h1>
-                <h3>
-                    <span style={{ color: 'white' }}>{t('subheading')}</span>
-                    <span className="text-animation"> </span>
+                <h3 className="hero-subtitle">
+                    <span style={{ color: 'white' }}>{t('subheading')} </span>
+                    <span ref={textRef} className="text-animation"></span>
                 </h3>
                 <p id="about-me">{t('about_me')}</p>
 
                 <div className="social-icons">
-                    <a href={LINKEDIN_PROFILE} target="_blank" rel="noreferrer"><i className='bx bxl-linkedin'></i></a>
-                    <a href={GITHUB_REPO} target="_blank" rel="noreferrer"><i className='bx bxl-github'></i></a>
-                    <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer"><i className='bx bxl-whatsapp'></i></a>
+                    <a href={LINKEDIN_PROFILE} target="_blank" rel="noreferrer" aria-label="LinkedIn"><i className='bx bxl-linkedin'></i></a>
+                    <a href={GITHUB_REPO} target="_blank" rel="noreferrer" aria-label="GitHub"><i className='bx bxl-github'></i></a>
+                    <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" aria-label="WhatsApp"><i className='bx bxl-whatsapp'></i></a>
                 </div>
 
                 <div className="btn-group">
                     <a
-                        href={`mailto:ramiroalejandolacci19@gmail.com`}
+                        href={`mailto:${EMAIL}`}
                         className="btn"
                     >
                         {t('hire_btn')}
@@ -72,7 +124,7 @@ const Hero: React.FC = () => {
                 <img
                     ref={imageRef}
                     src="/profile_photo/imagenlacci.png"
-                    alt="Ramiro Lacci"
+                    alt="Ramiro Lacci - Full Stack & Frontend Developer"
                     loading="lazy"
                 />
             </div>

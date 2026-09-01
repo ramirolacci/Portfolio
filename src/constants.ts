@@ -1,115 +1,151 @@
+import type { Project, SkillCategory } from './types';
+
 export const GITHUB_REPO = "https://github.com/ramirolacci";
 export const LINKEDIN_PROFILE = "https://www.linkedin.com/in/ramiro-lacci-20386026a/";
 export const WHATSAPP_LINK = "https://wa.link/a1bh6y";
 export const EMAIL = "ramiroalejandolacci19@gmail.com";
 
-export const PROJECTS = [
+export const PROJECTS: Project[] = [
     {
-        id: 9,
+        id: "waveframe",
         title: "WaveFrame Studio",
         image: "/images/waveframe.png",
         demo: "https://waveframe.com.ar/",
         repo: "https://github.com/ramirolacci/WaveFrame-Studio",
         translationKey: "project_waveframe_desc",
-        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css", "bx-cube"]
+        category: "featured",
+        featured: true,
+        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css", "bx-cube"],
+        roleKey: "project_waveframe_role",
+        highlightsKey: "project_waveframe_highlights"
     },
     {
-        id: 5,
+        id: "migusto-flamin",
         title: "Mi Gusto Flamin' Hot",
         image: "/images/project5.png",
         demo: "https://www.migusto.com.ar/crunchy/",
         repo: "https://github.com/ramirolacci/Mi-Gusto-x-Doritos-Flamin-Hot",
         translationKey: "project5_desc",
-        extra: true,
-        technologies: ["bxl-html5", "bxl-css3", "bxl-javascript", "bx-bolt"]
+        category: "featured",
+        featured: true,
+        technologies: ["bxl-html5", "bxl-css3", "bxl-javascript", "bx-bolt"],
+        roleKey: "project5_role",
+        highlightsKey: "project5_highlights"
     },
     {
-        id: 10,
-        title: "Photo Party",
-        image: "/images/photoparty.png",
-        demo: "https://mis15bianca-recuerdos.netlify.app/",
-        repo: "https://github.com/ramirolacci/PhotoPartyApp",
-        translationKey: "project_photoparty_desc",
-        technologies: ["bxl-react", "bxl-typescript", "bx-camera", "bx-video"]
+        id: "golden-tickets",
+        title: "Golden Tickets Mi Gusto",
+        image: "/images/Golden Tickets.png",
+        demo: "https://www.migusto.com.ar/tickets/",
+        repo: "https://github.com/ramirolacci/GoldenTickets",
+        translationKey: "project_golden_desc",
+        category: "fullstack",
+        featured: true,
+        technologies: ["bxl-react", "bxl-typescript", "bxl-php", "bxs-data"],
+        roleKey: "project_golden_role",
+        highlightsKey: "project_golden_highlights"
     },
     {
-        id: 6,
-        title: "QR Generator",
+        id: "qr-generator",
+        title: "QR Generator PRO",
         image: "/images/QR Generator.png",
         demo: "https://www.migusto.com.ar/tools/QR/",
         repo: "https://github.com/ramirolacci/QRgenPRO",
         translationKey: "project_qr_desc",
-        extra: true,
-        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css"]
+        category: "frontend",
+        featured: false,
+        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css"],
+        roleKey: "project_qr_role",
+        highlightsKey: "project_qr_highlights"
     },
     {
-        id: 1,
-        title: "Kiruki Make It Happen",
-        image: "/images/project1.png",
-        demo: "https://kiruki-makeit.netlify.app/",
-        repo: "https://github.com/ramirolacci/Kiruki-Make-It-Happen",
-        translationKey: "project1_desc",
-        technologies: ["bxl-html5", "bxl-css3", "bxl-javascript"]
+        id: "photoparty",
+        title: "Photo Party App",
+        image: "/images/photoparty.png",
+        demo: "https://mis15bianca-recuerdos.netlify.app/",
+        repo: "https://github.com/ramirolacci/PhotoPartyApp",
+        translationKey: "project_photoparty_desc",
+        category: "interactive",
+        featured: false,
+        technologies: ["bxl-react", "bxl-typescript", "bx-camera", "bx-video"],
+        roleKey: "project_photoparty_role",
+        highlightsKey: "project_photoparty_highlights"
     },
     {
-        id: 2,
-        title: "Bexc 2.0 Gym",
-        image: "/images/project2.png",
-        demo: "https://bexc.netlify.app/#home",
-        repo: "https://github.com/ramirolacci/Bexc2.0-Gym",
-        translationKey: "project2_desc",
-        technologies: ["bxl-react", "bxl-bootstrap", "bxl-javascript"]
+        id: "migusto-games",
+        title: "Mi Gusto Games (Lollapalooza)",
+        image: "/images/Games.png",
+        demo: "https://www.migusto.com.ar/games/aperturas/",
+        repo: "https://github.com/ramirolacci/MiGusto-Games",
+        translationKey: "project_games_desc",
+        category: "interactive",
+        featured: false,
+        technologies: ["bxl-react", "bxl-typescript", "bx-joystick"],
+        roleKey: "project_games_role",
+        highlightsKey: "project_games_highlights"
     },
     {
-        id: 3,
-        title: "Rüne Rental Car",
-        image: "/images/project3.png",
-        demo: "https://rune-rental-car.netlify.app/",
-        repo: "https://github.com/ramirolacci/Rune-Rental-Car",
-        translationKey: "project3_desc",
-        technologies: ["bxl-react", "bxl-typescript", "bxl-css3"]
-    },
-    {
-        id: 4,
+        id: "reminders-rooms",
         title: "Reminders Rooms",
         image: "/images/Rooms.png",
         demo: "https://www.migusto.com.ar/tools/rooms/",
         repo: "https://github.com/ramirolacci/RR-RemindersRoomsAPP",
         translationKey: "project_reminders_desc",
-        technologies: ["bxl-react", "bxl-typescript", "bxl-nodejs"]
+        category: "fullstack",
+        featured: false,
+        technologies: ["bxl-react", "bxl-typescript", "bxl-nodejs"],
+        roleKey: "project_reminders_role",
+        highlightsKey: "project_reminders_highlights"
     },
     {
-        id: 7,
-        title: "Mi Gusto Games",
-        image: "/images/Games.png",
-        demo: "https://www.migusto.com.ar/games/aperturas/",
-        repo: "https://github.com/ramirolacci/MiGusto-Games",
-        translationKey: "project_games_desc",
-        extra: true,
-        technologies: ["bxl-react", "bxl-typescript", "bx-joystick"]
-    },
-    {
-        id: 8,
-        title: "Golden Tickets",
-        image: "/images/Golden Tickets.png",
-        demo: "https://www.migusto.com.ar/tickets/",
-        repo: "https://github.com/ramirolacci/GoldenTickets",
-        translationKey: "project_golden_desc",
-        extra: true,
-        technologies: ["bxl-react", "bxl-typescript", "bxl-php"]
-    },
-    {
-        id: 11,
-        title: "Influencers Form",
+        id: "influencers-form",
+        title: "Influencers Exchange System",
         image: "/images/Influencers.png",
         demo: "https://www.migusto.com.ar/canjes/",
         repo: "https://github.com/ramirolacci/InfluencersForm",
         translationKey: "project_influencers_desc",
-        technologies: ["bxl-react", "bxl-typescript", "bxl-php", "bx-user-voice"]
+        category: "fullstack",
+        featured: false,
+        technologies: ["bxl-react", "bxl-typescript", "bxl-php", "bx-user-voice"],
+        roleKey: "project_influencers_role",
+        highlightsKey: "project_influencers_highlights"
+    },
+    {
+        id: "kiruki",
+        title: "Kiruki Make It Happen",
+        image: "/images/project1.png",
+        demo: "https://kiruki-makeit.netlify.app/",
+        repo: "https://github.com/ramirolacci/Kiruki-Make-It-Happen",
+        translationKey: "project1_desc",
+        category: "frontend",
+        featured: false,
+        technologies: ["bxl-html5", "bxl-css3", "bxl-javascript"]
+    },
+    {
+        id: "bexc-gym",
+        title: "Bexc 2.0 Gym",
+        image: "/images/project2.png",
+        demo: "https://bexc.netlify.app/#home",
+        repo: "https://github.com/ramirolacci/Bexc2.0-Gym",
+        translationKey: "project2_desc",
+        category: "frontend",
+        featured: false,
+        technologies: ["bxl-react", "bxl-bootstrap", "bxl-javascript"]
+    },
+    {
+        id: "rune-rental",
+        title: "Rüne Rental Car",
+        image: "/images/project3.png",
+        demo: "https://rune-rental-car.netlify.app/",
+        repo: "https://github.com/ramirolacci/Rune-Rental-Car",
+        translationKey: "project3_desc",
+        category: "frontend",
+        featured: false,
+        technologies: ["bxl-react", "bxl-typescript", "bxl-css3"]
     }
 ];
 
-export const SKILLS = [
+export const SKILLS: SkillCategory[] = [
     {
         category: "Languages",
         translationKey: "languages_heading",
@@ -118,6 +154,7 @@ export const SKILLS = [
             { name: "HTML5", icon: "bxl-html5", badge: "html5" },
             { name: "CSS3", icon: "bxl-css3", badge: "css3" },
             { name: "JavaScript", icon: "bxl-javascript", badge: "js" },
+            { name: "TypeScript", icon: "bxl-typescript", badge: "ts" },
             { name: "Python", icon: "bxl-python", badge: "python" },
             { name: "Ruby", icon: "bxs-diamond", badge: "ruby" },
             { name: "PHP", icon: "bxl-php", badge: "php" },
@@ -128,9 +165,11 @@ export const SKILLS = [
         translationKey: "frameworks_heading",
         icon: "bx-cog",
         items: [
-            { name: "Bootstrap", icon: "bxl-bootstrap", badge: "bootstrap" },
-            { name: "Node.js", icon: "bxl-nodejs", badge: "node" },
             { name: "React", icon: "bxl-react", badge: "react" },
+            { name: "Node.js", icon: "bxl-nodejs", badge: "node" },
+            { name: "Tailwind CSS", icon: "bxl-tailwind-css", badge: "tailwind" },
+            { name: "Bootstrap", icon: "bxl-bootstrap", badge: "bootstrap" },
+            { name: "GSAP", icon: "bx-movie-play", badge: "gsap" },
             { name: "Rails", icon: "bx-layer", badge: "rails" },
         ]
     },
@@ -141,6 +180,7 @@ export const SKILLS = [
         items: [
             { name: "MySQL", icon: "bxs-data", badge: "mysql" },
             { name: "Supabase", icon: "bx-cloud", badge: "supabase" },
+            { name: "phpMyAdmin", icon: "bxs-data", badge: "phpmyadmin" },
         ]
     },
     {
@@ -177,3 +217,4 @@ export const SKILLS = [
         ]
     }
 ];
+

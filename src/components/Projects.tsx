@@ -3,113 +3,118 @@ import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PROJECTS } from '../constants';
+import type { Project } from '../types';
+import { X, ExternalLink, Github } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
+type FilterType = 'all' | 'featured' | 'frontend' | 'fullstack' | 'interactive';
+
 const Projects: React.FC = () => {
     const { t } = useTranslation();
-    const [visibleCount, setVisibleCount] = useState(4);
+    const [activeFilter, setActiveFilter] = useState<FilterType>('all');
+    const [visibleCount, setVisibleCount] = useState(8);
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const sectionRef = useRef<HTMLDivElement>(null);
-    const wrapperRef = useRef<HTMLDivElement>(null);
-    const isTouchingRef = useRef(false);
-    const scrollResetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 895);
+    const gridRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth <= 895);
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    const filterCategories: { id: FilterType; labelKey: string }[] = [
+        { id: 'all', labelKey: 'filter_all' },
+        { id: 'featured', labelKey: 'filter_featured' },
+        { id: 'frontend', labelKey: 'filter_frontend' },
+        { id: 'fullstack', labelKey: 'filter_fullstack' },
+        { id: 'interactive', labelKey: 'filter_interactive' },
+    ];
 
-    useEffect(() => {
-        if (isMobile && wrapperRef.current) {
-            const el = wrapperRef.current;
-            const timeout = setTimeout(() => {
-                el.scrollLeft = el.scrollWidth / 3;
-            }, 50);
-            return () => clearTimeout(timeout);
-        }
-    }, [isMobile]);
+    const filteredProjects = PROJECTS.filter(project => {
+        if (activeFilter === 'all') return true;
+        if (activeFilter === 'featured') return project.featured;
+        return project.category === activeFilter;
+    });
 
+    const visibleProjects = filteredProjects.slice(0, visibleCount);
+
+    // Animation on filter change or count change
     useEffect(() => {
-        const items = wrapperRef.current?.querySelectorAll('.proyect-item');
+        const items = gridRef.current?.querySelectorAll('.proyect-item');
         if (!items || items.length === 0) return;
 
         const ctx = gsap.context(() => {
-            gsap.set(items, { opacity: 1, y: 0 });
-            gsap.from(items, {
-                opacity: 0,
-                y: 40,
-                duration: 0.7,
-                stagger: 0.12,
-                ease: 'power2.out',
-                clearProps: 'all',
-            });
-        });
+            gsap.fromTo(
+                items,
+                { opacity: 0, y: 35, scale: 0.96 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 0.5,
+                    stagger: 0.08,
+                    ease: 'power2.out',
+                    clearProps: 'transform,opacity',
+                }
+            );
+        }, gridRef);
 
         return () => ctx.revert();
-    }, [visibleCount, isMobile]);
+    }, [activeFilter, visibleCount]);
 
-    const visibleProjects = isMobile ? PROJECTS : PROJECTS.slice(0, visibleCount);
-
-    const handleSeeMore = () => {
-        if (visibleCount >= PROJECTS.length) {
-            setVisibleCount(4);
-        } else {
-            setVisibleCount(prev => Math.min(prev + 4, PROJECTS.length));
-        }
-    };
-
-    const resetInfiniteScroll = () => {
-        if (!isMobile || isTouchingRef.current) return;
-
-        const el = wrapperRef.current;
-        if (!el) return;
-
-        const itemWidth = el.scrollWidth / 3;
-        if (itemWidth <= 0) return;
-
-        if (el.scrollLeft >= itemWidth * 2) el.scrollLeft -= itemWidth;
-        if (el.scrollLeft <= 0) el.scrollLeft += itemWidth;
-    };
-
-    const handleWrapperScroll = () => {
-        if (!isMobile) return;
-
-        if (scrollResetTimerRef.current) {
-            clearTimeout(scrollResetTimerRef.current);
-        }
-
-        scrollResetTimerRef.current = setTimeout(resetInfiniteScroll, 120);
-    };
-
+    // Handle ESC key for modal close
     useEffect(() => {
-        return () => {
-            if (scrollResetTimerRef.current) {
-                clearTimeout(scrollResetTimerRef.current);
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                setSelectedProject(null);
             }
         };
-    }, []);
+        if (selectedProject) {
+            window.addEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = 'hidden';
+        }
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = 'auto';
+        };
+    }, [selectedProject]);
+
+    const handleSeeMore = () => {
+        if (visibleCount >= filteredProjects.length) {
+            setVisibleCount(8);
+        } else {
+            setVisibleCount(filteredProjects.length);
+        }
+    };
 
     return (
         <section className="proyects" id="projects" ref={sectionRef}>
             <div className="proyects-box">
-                <h2 className="heading">{t('projects_heading')}</h2>
+                <h2 className="heading">{t('proyect_heading')}</h2>
 
-                <div
-                    className="wrapper"
-                    ref={wrapperRef}
-                    onScroll={handleWrapperScroll}
-                    onTouchStart={() => { isTouchingRef.current = true; }}
-                    onTouchEnd={() => {
-                        isTouchingRef.current = false;
-                        resetInfiniteScroll();
-                    }}
-                    onTouchCancel={() => { isTouchingRef.current = false; }}
-                >
-                    {(isMobile ? [...PROJECTS, ...PROJECTS, ...PROJECTS] : visibleProjects).map((project, index) => (
-                        <div key={`${project.id}-${index}`} className="proyect-item">
-                            <img src={project.image} alt={project.title} loading="lazy" />
+                {/* Filter Tabs */}
+                <div className="project-filters">
+                    {filterCategories.map(category => (
+                        <button
+                            key={category.id}
+                            type="button"
+                            className={`filter-btn ${activeFilter === category.id ? 'active' : ''}`}
+                            onClick={() => {
+                                setActiveFilter(category.id);
+                                setVisibleCount(8);
+                            }}
+                        >
+                            {t(category.labelKey)}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Projects Grid */}
+                <div className="wrapper projects-grid" ref={gridRef}>
+                    {visibleProjects.map((project) => (
+                        <div key={project.id} className="proyect-item">
+                            <div className="project-img-container">
+                                <img src={project.image} alt={project.title} loading="lazy" />
+                                {project.featured && (
+                                    <span className="featured-badge">⭐ {t('filter_featured')}</span>
+                                )}
+                            </div>
                             <h2>{project.title}</h2>
                             <div className="tech-icons">
                                 {project.technologies?.map((tech, i) => (
@@ -117,22 +122,86 @@ const Projects: React.FC = () => {
                                 ))}
                             </div>
                             <p>{t(project.translationKey)}</p>
+                            
                             <div className="btn-group">
-                                <a href={project.demo} target="_blank" rel="noreferrer" className="btn">Demo</a>
-                                <a href={project.repo} target="_blank" rel="noreferrer" className="btn">Repo</a>
+                                <a href={project.demo} target="_blank" rel="noreferrer" className="btn btn-sm">
+                                    Demo <ExternalLink size={14} style={{ marginLeft: '4px' }} />
+                                </a>
+                                <a href={project.repo} target="_blank" rel="noreferrer" className="btn btn-sm btn-outline">
+                                    Repo <Github size={14} style={{ marginLeft: '4px' }} />
+                                </a>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                {!isMobile && (
-                    <div className="ver-mas-container" style={{ textAlign: 'center', marginTop: '2rem' }}>
+                {/* See More Button */}
+                {filteredProjects.length > 8 && (
+                    <div className="ver-mas-container" style={{ textAlign: 'center', marginTop: '3rem' }}>
                         <button
                             className="btn ver-mas-btn"
                             onClick={handleSeeMore}
                         >
-                            {visibleCount >= PROJECTS.length ? t('ver-menos') : t('ver-mas')}
+                            {visibleCount >= filteredProjects.length ? t('ver-menos') : t('ver-mas')}
                         </button>
+                    </div>
+                )}
+
+                {/* Case Study Modal */}
+                {selectedProject && (
+                    <div className="project-modal-backdrop" onClick={() => setSelectedProject(null)}>
+                        <div className="project-modal" onClick={e => e.stopPropagation()}>
+                            <button
+                                type="button"
+                                className="modal-close-btn"
+                                onClick={() => setSelectedProject(null)}
+                                aria-label="Close"
+                            >
+                                <X size={24} />
+                            </button>
+                            
+                            <div className="modal-header">
+                                <img src={selectedProject.image} alt={selectedProject.title} />
+                            </div>
+                            
+                            <div className="modal-body">
+                                <h3>{selectedProject.title}</h3>
+                                <p className="modal-desc">{t(selectedProject.translationKey)}</p>
+
+                                {selectedProject.roleKey && (
+                                    <div className="modal-meta-item">
+                                        <strong>{t('project_role_label')}</strong> {t(selectedProject.roleKey)}
+                                    </div>
+                                )}
+
+                                <div className="modal-meta-item">
+                                    <strong>{t('project_tech_label')}</strong>
+                                    <div className="modal-tech-list">
+                                        {selectedProject.technologies.map((tech, i) => (
+                                            <span key={i} className="modal-tech-chip">
+                                                <i className={`bx ${tech}`}></i> {tech.replace('bxl-', '').replace('bx-', '')}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {selectedProject.highlightsKey && (
+                                    <div className="modal-meta-item">
+                                        <strong>{t('project_highlights_label')}</strong>
+                                        <p className="highlights-text">{t(selectedProject.highlightsKey)}</p>
+                                    </div>
+                                )}
+
+                                <div className="modal-actions">
+                                    <a href={selectedProject.demo} target="_blank" rel="noreferrer" className="btn">
+                                        Ver Demo Online <ExternalLink size={16} />
+                                    </a>
+                                    <a href={selectedProject.repo} target="_blank" rel="noreferrer" className="btn btn-secondary">
+                                        Ver Código GitHub <Github size={16} />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 )}
             </div>

@@ -281,10 +281,36 @@ span {
     color: var(--main-color);
 }
 
-.home-content h3 {
+.home-content h3,
+.hero-subtitle {
     margin-bottom: 2rem;
     margin-top: 1rem;
-    font-size: 3.5rem;
+    font-size: 3.2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    line-height: 1.3;
+}
+
+.hero-subtitle .text-animation {
+    color: var(--main-color);
+    font-weight: 700;
+    text-shadow: 0 0 15px rgba(0, 255, 238, 0.4);
+}
+
+.typed-cursor {
+    color: var(--main-color) !important;
+    font-weight: 300 !important;
+    opacity: 1;
+    animation: typed-blink 0.7s infinite !important;
+    display: inline-block !important;
+    margin-left: 2px !important;
+    vertical-align: baseline !important;
+}
+
+@keyframes typed-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .home-content h1 {
@@ -391,101 +417,13 @@ span {
 }
 
 .text-animation {
-    font-size: 34px;
-    font-weight: 600;
-    min-width: 280px;
-    position: relative;
-}
-
-.text-animation::before {
-    content: " Web Developer";
     color: var(--main-color);
-    animation: words 20s infinite;
-}
-
-.text-animation::after {
-    content: "";
-    background-color: var(--bg-color);
-    position: absolute;
-    width: calc(100% + 8px);
-    height: 100%;
-    border-left: 3px solid var(--bg-color);
-    right: -8px;
-    animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
-}
-
-@keyframes cursor {
-    to {
-        border-left: 2px solid var(--main-color);
-    }
-}
-
-@keyframes words {
-
-    0%,
-    20% {
-        content: " Frontend Designer";
-    }
-
-    21%,
-    40% {
-        content: " Web Designer";
-    }
-
-    41%,
-    60% {
-        content: " UI / UX Designer";
-    }
-
-    61%,
-    80% {
-        content: " Web Developer";
-    }
-
-    81%,
-    100% {
-        content: " Software Tester";
-    }
-}
-
-@keyframes typing {
-
-    10%,
-    15%,
-    30%,
-    35%,
-    50%,
-    55%,
-    70%,
-    75%,
-    90%,
-    95% {
-        width: 0;
-    }
-
-    5%,
-    20%,
-    25%,
-    40%,
-    45%,
-    60%,
-    65%,
-    80%,
-    85% {
-        width: calc(100% + 8px);
-    }
+    font-weight: 700;
+    text-shadow: 0 0 15px rgba(0, 255, 238, 0.4);
 }
 
 /* Respeto a usuarios con motion reducido */
 @media (prefers-reduced-motion: reduce) {
-    .text-animation::after {
-        animation: none;
-    }
-
-    .text-animation::before {
-        animation: none;
-    }
-
     .service-box:hover,
     .timeline-content:hover,
     .proyect-item:hover,
@@ -632,10 +570,12 @@ span {
 
 .badge--html5 {
     background: #e34f26;
+    color: #fff;
 }
 
 .badge--css3 {
     background: #1572B6;
+    color: #fff;
 }
 
 .badge--js {
@@ -643,90 +583,153 @@ span {
     color: #202020;
 }
 
+.badge--ts {
+    background: #3178c6;
+    color: #fff;
+}
+
 .badge--python {
     background: #3776AB;
+    color: #fff;
 }
 
 .badge--ruby {
     background: #cc342d;
+    color: #fff;
 }
 
 .badge--php {
     background: #777bb3;
+    color: #fff;
 }
 
 .badge--bootstrap {
     background: #7952b3;
+    color: #fff;
 }
 
 .badge--node {
     background: #3c873a;
+    color: #fff;
 }
 
 .badge--react {
     background: #149eca;
+    color: #fff;
 }
 
 .badge--rails {
     background: #cc0000;
+    color: #fff;
+}
+
+.badge--tailwind {
+    background: #06b6d4;
+    color: #fff;
+}
+
+.badge--gsap {
+    background: #88ce02;
+    color: #000;
 }
 
 .badge--mysql {
     background: #00618a;
-}
-
-.badge--vscode {
-    background: #007ACC;
-}
-
-.badge--cursor {
-    background: #000000 !important;
-}
-
-.badge--antigravity {
-    background: #7b2ff7;
-}
-
-.badge--replit {
-    background: #ff4747;
-}
-
-.badge--github {
-    background: #24292f;
-}
-
-.badge--git {
-    background: #de4c36;
-}
-
-.badge--perplexity {
-    background: #273444;
-}
-
-.badge--adobexd {
-    background: #450135;
-}
-
-.badge--netlify {
-    background: #0e1e25;
-}
-
-.badge--vercel {
-    background: #111;
-}
-
-.badge--jira {
-    background: #0052CC;
-}
-
-.badge--slack {
-    background: #4a154b;
+    color: #fff;
 }
 
 .badge--supabase {
     background: #3ECF8E;
     color: #202020;
     border: none;
+}
+
+.badge--api {
+    background: #e44343;
+    color: #fff;
+}
+
+.badge--phpmyadmin {
+    background: linear-gradient(135deg, #4F5B93 0%, #777bb3 45%, #f29111 100%) !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.badge--vscode {
+    background: #007ACC;
+    color: #fff;
+}
+
+.badge--cursor {
+    background: #1a1a1a !important;
+    color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.badge--antigravity {
+    background: linear-gradient(135deg, #5b13cf 0%, #7b2ff7 55%, #00ffee 100%) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    border: 1px solid rgba(0, 255, 238, 0.35) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.badge--replit {
+    background: #ff4747;
+    color: #fff;
+}
+
+.badge--hostinger {
+    background: #673ab7;
+    color: #fff;
+}
+
+.badge--netlify {
+    background: #00c7b7;
+    color: #000;
+}
+
+.badge--vercel {
+    background: #1a1a1a;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.badge--github {
+    background: #24292f;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.badge--git {
+    background: #de4c36;
+    color: #fff;
+}
+
+.badge--perplexity {
+    background: #273444;
+    color: #fff;
+}
+
+.badge--adobexd {
+    background: #ff61f6;
+    color: #000;
+}
+
+.badge--slack {
+    background: #4a154b;
+    color: #fff;
+}
+
+.badge--jira {
+    background: #0052CC;
+    color: #fff;
+}
+
+.badge--responsive {
+    background: #00b4d8;
+    color: #fff;
 }
 
 .db-badge {
@@ -1247,53 +1250,84 @@ img.db-badge {
 }
 
 .proyect-item {
-    min-height: 500px;
-    max-width: none;
+    min-height: 420px;
     background: rgb(0, 0, 0, 0.7);
     border: 3px solid rgba(238, 238, 238, 0.2);
     border-radius: 2rem;
     margin: 0;
-    padding: 24px 32px;
+    padding: 0 0 1.8rem 0;
+    overflow: hidden;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
     text-align: center;
-    gap: 1.5rem;
     color: white;
     transition: 0.4s ease-in-out;
 }
 
-.proyects-box .proyect-item img {
+.project-img-container {
+    position: relative;
     width: 100%;
-    height: 50%;
-    object-fit: cover;
-    border-radius: 1.2rem 1.2rem 0 0;
-    border: 0;
-    box-shadow: none;
-    margin-bottom: 1rem;
+    height: 165px;
+    overflow: hidden;
+    margin: 0 0 1.2rem 0;
+    flex-shrink: 0;
+}
+
+.proyects-box .proyect-item img,
+.project-img-container img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    transition: transform 0.5s ease;
 }
 
 .proyect-item:hover {
     border: 3px solid rgba(238, 238, 238, 0.2);
-    transform: translateY(-10px)scale(1.03);
-    box-shadow: 0 0 50px var(--main-color);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 0 40px var(--main-color);
+}
+
+.proyect-item:hover .project-img-container img {
+    transform: scale(1.05);
 }
 
 .proyect-item h2 {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+    padding: 0 1.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
 }
 
 .proyect-item p {
     font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 0 1.5rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
 }
 
 .tech-icons {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.2rem;
     justify-content: center;
-    margin: 1rem 0;
+    padding: 0 1.5rem;
+    margin: 0.3rem 0 1rem 0;
+}
+
+.proyect-item .btn-group {
+    margin-top: auto;
+    padding: 0 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
 }
 
 .tech-icon {
@@ -1569,18 +1603,14 @@ img.db-badge {
 
     .proyect-item {
         flex: 0 0 75%;
-        /* Reduced width */
         flex-shrink: 0;
-        /* Important for horizontal scroll */
         scroll-snap-align: center;
-        min-height: 420px;
-        /* Reduced height */
-        padding: 2rem;
+        min-height: 440px;
+        padding: 0 0 2rem 0;
     }
 
-    .proyects-box .proyect-item img {
-        height: 40%;
-        /* Reduced image height to show more text */
+    .project-img-container {
+        height: 160px;
     }
 
     .ver-mas-container {
@@ -1894,3 +1924,263 @@ img.db-badge {
         transition: none;
     }
 }
+
+/* ══════════════════════════════════════════════
+   ENHANCEMENTS 2026 — UI & CASE STUDY STYLES
+   ══════════════════════════════════════════════ */
+
+.skills {
+    padding: 10rem 12% 10rem;
+    background: var(--bg-color);
+}
+
+.minuscula-span {
+    color: var(--main-color);
+    text-shadow: 0 0 25px var(--main-color);
+}
+
+/* ── Secondary & Outline Buttons ── */
+.btn-secondary {
+    background: transparent !important;
+    border: 2px solid var(--main-color) !important;
+    color: var(--main-color) !important;
+    box-shadow: none !important;
+}
+
+.btn-secondary:hover {
+    background: var(--main-color) !important;
+    color: #000 !important;
+    box-shadow: 0 0 25px var(--main-color) !important;
+}
+
+.btn-sm {
+    padding: 0.8rem 1.4rem !important;
+    font-size: 1.4rem !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-outline {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+    box-shadow: none !important;
+}
+
+.btn-outline:hover {
+    border-color: #fff !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #fff !important;
+}
+
+.btn-info {
+    background: rgba(0, 255, 238, 0.15) !important;
+    border: 1px solid var(--main-color) !important;
+    color: var(--main-color) !important;
+    padding: 0.8rem 1rem !important;
+}
+
+.btn-info:hover {
+    background: var(--main-color) !important;
+    color: #000 !important;
+}
+
+/* ── Project Filter Tabs ── */
+.project-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-bottom: 3.5rem;
+}
+
+.filter-btn {
+    padding: 0.9rem 2.2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    color: #fff;
+    border-color: var(--main-color);
+    background: rgba(0, 255, 238, 0.08);
+}
+
+.filter-btn.active {
+    color: #000;
+    background: var(--main-color);
+    border-color: var(--main-color);
+    box-shadow: 0 0 20px rgba(0, 255, 238, 0.4);
+}
+
+/* ── Projects Grid & Cards ── */
+.projects-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+    gap: 2.5rem !important;
+    width: 100%;
+}
+
+.project-img-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1.5rem 1.5rem 0 0;
+}
+
+.featured-badge {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: rgba(0, 0, 0, 0.85);
+    color: var(--main-color);
+    border: 1px solid rgba(238, 238, 238, 0.25);
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    backdrop-filter: blur(8px);
+}
+
+/* ── Modal Case Study Drawer ── */
+.project-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.project-modal {
+    position: relative;
+    background: #111;
+    border: 1px solid rgba(0, 255, 238, 0.3);
+    border-radius: 2rem;
+    max-width: 650px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 0 50px rgba(0, 255, 238, 0.2);
+    animation: modalSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    width: 3.8rem;
+    height: 3.8rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    background: var(--main-color);
+    color: #000;
+    border-color: var(--main-color);
+}
+
+.modal-header img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-body {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.modal-body h3 {
+    font-size: 2.6rem;
+    color: var(--main-color);
+}
+
+.modal-desc {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.modal-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    font-size: 1.4rem;
+}
+
+.modal-meta-item strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+.modal-tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.modal-tech-chip {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0.4rem 1.2rem;
+    border-radius: 1.5rem;
+    font-size: 1.3rem;
+    color: var(--main-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.highlights-text {
+    background: rgba(0, 255, 238, 0.04);
+    border-left: 3px solid var(--main-color);
+    padding: 1rem 1.5rem;
+    border-radius: 0 0.8rem 0.8rem 0;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}

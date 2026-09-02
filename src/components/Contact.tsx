@@ -2,7 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { EMAIL } from '../constants';
+import emailjs from '@emailjs/browser';
+import {
+    WEB3FORMS_ACCESS_KEY,
+    EMAILJS_SERVICE_ID,
+    EMAILJS_TEMPLATE_NOTIF,
+    EMAILJS_TEMPLATE_AUTO,
+    EMAILJS_PUBLIC_KEY
+} from '../constants';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,9 +17,39 @@ const Contact: React.FC = () => {
     const { t } = useTranslation();
     const sectionRef = useRef<HTMLDivElement>(null);
     const formRef = useRef<HTMLFormElement>(null);
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitted, setSubmitted] = useState(false);
-    const [errorMsg, setErrorMsg] = useState('');
+    const [status, setStatus] = useState<{
+        type: 'success' | 'error' | 'warning';
+        message: string;
+    } | null>(null);
+
+    const adjustTextareaHeight = () => {
+        const textarea = textareaRef.current;
+        if (!textarea) return;
+        textarea.style.height = 'auto';
+
+        const phoneInput = document.getElementById('phone_number');
+        const fullInput = document.getElementById('full_name');
+
+        let minH = 258;
+        if (phoneInput && fullInput) {
+            const phoneRect = phoneInput.getBoundingClientRect();
+            const fullRect = fullInput.getBoundingClientRect();
+            if (phoneRect.height > 0) {
+                minH = phoneRect.bottom - fullRect.top;
+            }
+        }
+
+        const calculatedHeight = Math.max(minH, textarea.scrollHeight);
+        textarea.style.height = `${calculatedHeight}px`;
+    };
+
+    useEffect(() => {
+        adjustTextareaHeight();
+        window.addEventListener('resize', adjustTextareaHeight);
+        return () => window.removeEventListener('resize', adjustTextareaHeight);
+    }, []);
 
     // Scroll reveal
     useEffect(() => {
@@ -65,10 +102,10 @@ const Contact: React.FC = () => {
 
         inputs.forEach((input) => {
             const onFocus = () => {
-                gsap.to(input, { boxShadow: '0 0 0 3px rgba(0,255,238,0.5), 0 0 20px rgba(0,255,238,0.2)', x: 6, duration: 0.25, ease: 'power2.out' });
+                gsap.to(input, { boxShadow: '0 0 15px rgba(0,255,238,0.35)', duration: 0.25, ease: 'power2.out' });
             };
             const onBlur = () => {
-                gsap.to(input, { boxShadow: 'none', x: 0, duration: 0.35, ease: 'power2.inOut' });
+                gsap.to(input, { boxShadow: 'none', duration: 0.35, ease: 'power2.inOut' });
             };
             input.addEventListener('focus', onFocus);
             input.addEventListener('blur', onBlur);
@@ -88,57 +125,84 @@ const Contact: React.FC = () => {
         if (!form) return;
 
         setIsSubmitting(true);
-        setErrorMsg('');
+        setStatus(null);
 
         const formData = new FormData(form);
-        formData.append("access_key", "46d0a7a7-5ec9-482a-a9a7-975949514781"); // Public Web3Forms key for direct portfolio delivery
-        formData.append("to_email", EMAIL);
+        formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+        formData.append("from_name", "Portafolio | Ramiro Lacci");
+        
+        const clientName = formData.get("name") || "Cliente";
+        const clientSubject = formData.get("subject") || "Consulta Web";
+        const clientEmail = formData.get("email") as string;
+
+        formData.append("subject", `📩 Nuevo contacto de ${clientName}: ${clientSubject}`);
+        if (clientEmail) {
+            formData.append("replyto", clientEmail);
+        }
 
         try {
-            const response = await fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                body: formData
-            });
+            if (EMAILJS_SERVICE_ID && EMAILJS_PUBLIC_KEY && EMAILJS_TEMPLATE_NOTIF) {
+                // 1. Notificación a Ramiro (HTML a medida)
+                await emailjs.send(
+                    EMAILJS_SERVICE_ID,
+                    EMAILJS_TEMPLATE_NOTIF,
+                    {
+                        from_name: clientName,
+                        from_email: clientEmail,
+                        phone: formData.get("phone") || "No especificado",
+                        subject: clientSubject,
+                        message: formData.get("message"),
+                    },
+                    EMAILJS_PUBLIC_KEY
+                );
 
-            const res = await response.json();
-
-            if (res.success || response.ok) {
-                const successEl = document.querySelector('.contact-success');
-                if (successEl) {
-                    gsap.timeline()
-                        .to(form, { opacity: 0, y: -20, duration: 0.35, ease: 'power2.in' })
-                        .set(form, { display: 'none' })
-                        .fromTo(successEl,
-                            { display: 'flex', opacity: 0, scale: 0.8 },
-                            { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.7)' }
+                // 2. Respuesta automática de confirmación al cliente (HTML a medida)
+                if (EMAILJS_TEMPLATE_AUTO && clientEmail) {
+                    try {
+                        const autoRes = await emailjs.send(
+                            EMAILJS_SERVICE_ID,
+                            EMAILJS_TEMPLATE_AUTO,
+                            {
+                                to_name: clientName,
+                                name: clientName,
+                                to_email: clientEmail,
+                                email: clientEmail,
+                                reply_to: "ramiroalejandolacci19@gmail.com",
+                                from_name: "Ramiro Lacci",
+                                subject: clientSubject,
+                            },
+                            EMAILJS_PUBLIC_KEY
                         );
-                }
-                setSubmitted(true);
-                form.reset();
-
-                setTimeout(() => {
-                    if (successEl) {
-                        gsap.timeline()
-                            .to(successEl, { opacity: 0, scale: 0.9, duration: 0.3 })
-                            .set(successEl, { display: 'none' })
-                            .set(form, { display: 'flex', opacity: 0 })
-                            .to(form, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
+                        console.log("Autoresponder success:", autoRes);
+                    } catch (autoErr: any) {
+                        console.error("Autoresponder error details:", autoErr?.text || autoErr);
                     }
-                    setSubmitted(false);
-                }, 4000);
+                }
             } else {
-                throw new Error("Submit failed");
+                // Fallback a Web3Forms
+                const response = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    body: formData
+                });
+                const res = await response.json();
+                if (!res.success && !response.ok) {
+                    throw new Error(res.message || "No se pudo procesar el envío.");
+                }
             }
-        } catch {
-            // Fallback: direct mailto trigger
-            const name = (form.querySelector('#full_name') as HTMLInputElement)?.value || '';
-            const email = (form.querySelector('#email') as HTMLInputElement)?.value || '';
-            const subject = (form.querySelector('#subject') as HTMLInputElement)?.value || 'Contacto desde Portafolio';
-            const message = (form.querySelector('#message') as HTMLTextAreaElement)?.value || '';
 
-            const mailtoUrl = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`)}`;
-            window.location.href = mailtoUrl;
-            setSubmitted(true);
+            setStatus({
+                type: 'success',
+                message: '¡Mensaje enviado con éxito! Te responderé a la brevedad 🚀'
+            });
+            form.reset();
+            adjustTextareaHeight();
+            setTimeout(() => setStatus(null), 6000);
+        } catch (err: any) {
+            setStatus({
+                type: 'warning',
+                message: err.message || "No se pudo enviar el mensaje. Por favor intenta más tarde."
+            });
+            setTimeout(() => setStatus(null), 6000);
         } finally {
             setIsSubmitting(false);
         }
@@ -152,34 +216,43 @@ const Contact: React.FC = () => {
             </h2>
 
             <form ref={formRef} onSubmit={handleSubmit}>
-                <div className="input-group">
-                    <div className="input-box">
-                        <input type="text" name="full_name" id="full_name" autoComplete="name" placeholder={t('full_name_input')} required />
+                <div className="form-container">
+                    <div className="input-group">
+                        <input type="text" name="name" id="full_name" autoComplete="name" placeholder={t('full_name_input')} required />
                         <input type="email" name="email" id="email" autoComplete="email" placeholder={t('email_input')} required />
-                    </div>
-                    <div className="input-box">
-                        <input type="tel" name="phone_number" id="phone_number" autoComplete="tel" placeholder={t('phone_number_input')} />
+                        <input type="tel" name="phone" id="phone_number" autoComplete="tel" placeholder={t('phone_number_input')} />
                         <input type="text" name="subject" id="subject" autoComplete="off" placeholder={t('subject_input')} />
                     </div>
+                    <div className="input-group-2">
+                        <textarea
+                            ref={textareaRef}
+                            name="message"
+                            id="message"
+                            rows={1}
+                            placeholder={t('your_message_input')}
+                            onInput={adjustTextareaHeight}
+                            required
+                        ></textarea>
+                        <div className="submit-btn-box">
+                            <input
+                                type="submit"
+                                disabled={isSubmitting}
+                                value={isSubmitting ? t('sending_message_btn') : t('send_message_btn')}
+                                className="btn contact-submit-btn"
+                            />
+                        </div>
+                    </div>
                 </div>
-                <div className="input-group-2">
-                    <textarea name="message" id="message" cols={30} rows={8} placeholder={t('your_message_input')} required></textarea>
-                    <input
-                        type="submit"
-                        disabled={isSubmitting}
-                        value={isSubmitting ? t('sending_message_btn') : (submitted ? '✓' : t('send_message_btn'))}
-                        className="btn contact-submit-btn"
-                    />
-                </div>
-                {errorMsg && <p className="contact-error">{errorMsg}</p>}
-            </form>
 
-            {/* Success state */}
-            <div className="contact-success" style={{ display: 'none' }}>
-                <div className="success-icon">✓</div>
-                <h3>{t('send_message_btn')} ✓</h3>
-                <p>¡Mensaje enviado con éxito! Te responderé a la brevedad 🚀</p>
-            </div>
+                {status && (
+                    <div className={`contact-status-msg contact-${status.type}-msg`} role="status">
+                        {status.type === 'success' && <i className="bx bx-check-circle contact-status-icon"></i>}
+                        {status.type === 'error' && <i className="bx bx-x-circle contact-status-icon"></i>}
+                        {status.type === 'warning' && <i className="bx bx-error contact-status-icon"></i>}
+                        <span>{status.message}</span>
+                    </div>
+                )}
+            </form>
         </section>
     );
 };

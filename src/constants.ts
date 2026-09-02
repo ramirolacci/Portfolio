@@ -4,6 +4,12 @@ export const GITHUB_REPO = "https://github.com/ramirolacci";
 export const LINKEDIN_PROFILE = "https://www.linkedin.com/in/ramiro-lacci-20386026a/";
 export const WHATSAPP_LINK = "https://wa.link/a1bh6y";
 export const EMAIL = "ramiroalejandolacci19@gmail.com";
+export const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "35cca5ba-e7f0-44a5-a005-a25663fa6ea3";
+
+export const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
+export const EMAILJS_TEMPLATE_NOTIF = import.meta.env.VITE_EMAILJS_TEMPLATE_NOTIF || "";
+export const EMAILJS_TEMPLATE_AUTO = import.meta.env.VITE_EMAILJS_TEMPLATE_AUTO || "";
+export const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "";
 
 export const PROJECTS: Project[] = [
     {

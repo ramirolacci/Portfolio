@@ -34,29 +34,11 @@ const Projects: React.FC = () => {
 
     const visibleProjects = filteredProjects.slice(0, visibleCount);
 
-    // Animation on filter change or count change
-    useEffect(() => {
-        const items = gridRef.current?.querySelectorAll('.proyect-item');
-        if (!items || items.length === 0) return;
-
-        const ctx = gsap.context(() => {
-            gsap.fromTo(
-                items,
-                { opacity: 0, y: 35, scale: 0.96 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    duration: 0.5,
-                    stagger: 0.08,
-                    ease: 'power2.out',
-                    clearProps: 'transform,opacity',
-                }
-            );
-        }, gridRef);
-
-        return () => ctx.revert();
-    }, [activeFilter, visibleCount]);
+    const handleFilterChange = (newFilter: FilterType) => {
+        if (newFilter === activeFilter) return;
+        setActiveFilter(newFilter);
+        setVisibleCount(8);
+    };
 
     // Handle ESC key for modal close
     useEffect(() => {
@@ -95,10 +77,7 @@ const Projects: React.FC = () => {
                             key={category.id}
                             type="button"
                             className={`filter-btn ${activeFilter === category.id ? 'active' : ''}`}
-                            onClick={() => {
-                                setActiveFilter(category.id);
-                                setVisibleCount(8);
-                            }}
+                            onClick={() => handleFilterChange(category.id)}
                         >
                             {t(category.labelKey)}
                         </button>
@@ -106,9 +85,13 @@ const Projects: React.FC = () => {
                 </div>
 
                 {/* Projects Grid */}
-                <div className="wrapper projects-grid" ref={gridRef}>
-                    {visibleProjects.map((project) => (
-                        <div key={project.id} className="proyect-item">
+                <div key={`${activeFilter}-${visibleCount}`} className="wrapper projects-grid" ref={gridRef}>
+                    {visibleProjects.map((project, index) => (
+                        <div
+                            key={project.id}
+                            className="proyect-item"
+                            style={{ animationDelay: `${index * 60}ms` }}
+                        >
                             <div className="project-img-container">
                                 <img src={project.image} alt={project.title} loading="lazy" />
                                 {project.featured && (

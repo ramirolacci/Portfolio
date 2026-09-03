@@ -28,7 +28,7 @@ export const PROJECTS: Project[] = [
     {
         id: "migusto-flamin",
         title: "Mi Gusto Flamin' Hot",
-        image: "/images/project5.png",
+        image: "/images/Mi Gusto Flamin Hot.png",
         demo: "https://www.migusto.com.ar/crunchy/",
         repo: "https://github.com/ramirolacci/Mi-Gusto-x-Doritos-Flamin-Hot",
         translationKey: "project5_desc",
@@ -47,9 +47,22 @@ export const PROJECTS: Project[] = [
         translationKey: "project_golden_desc",
         category: "fullstack",
         featured: true,
-        technologies: ["bxl-react", "bxl-typescript", "bxl-php", "bxs-data"],
+        technologies: ["bxl-react", "bxl-typescript", "bxs-data"],
         roleKey: "project_golden_role",
         highlightsKey: "project_golden_highlights"
+    },
+    {
+        id: "migusto-lasagrada",
+        title: "Mi Gusto La Sagrada",
+        image: "/images/La Sagrada.png",
+        demo: "https://www.migusto.com.ar/LaSagrada/",
+        repo: "https://github.com/ramirolacci/MG_LaSagrada",
+        translationKey: "project_sagrada_desc",
+        category: "frontend",
+        featured: true,
+        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css", "bx-bolt"],
+        roleKey: "project_sagrada_role",
+        highlightsKey: "project_sagrada_highlights"
     },
     {
         id: "qr-generator",
@@ -79,7 +92,7 @@ export const PROJECTS: Project[] = [
     },
     {
         id: "migusto-games",
-        title: "Mi Gusto Games (Lollapalooza)",
+        title: "Mi Gusto Games",
         image: "/images/Games.png",
         demo: "https://www.migusto.com.ar/games/aperturas/",
         repo: "https://github.com/ramirolacci/MiGusto-Games",
@@ -91,35 +104,22 @@ export const PROJECTS: Project[] = [
         highlightsKey: "project_games_highlights"
     },
     {
-        id: "reminders-rooms",
-        title: "Reminders Rooms",
-        image: "/images/Rooms.png",
-        demo: "https://www.migusto.com.ar/tools/rooms/",
-        repo: "https://github.com/ramirolacci/RR-RemindersRoomsAPP",
-        translationKey: "project_reminders_desc",
+        id: "sagitarium-gym",
+        title: "Sagitarium Gym System",
+        image: "/images/Sagitarium Gym.png",
+        demo: "https://sagitariumgym.netlify.app/login",
+        repo: "https://github.com/ramirolacci/Sagitarium-Gym",
+        translationKey: "project_sagitarium_desc",
         category: "fullstack",
         featured: false,
-        technologies: ["bxl-react", "bxl-typescript", "bxl-nodejs"],
-        roleKey: "project_reminders_role",
-        highlightsKey: "project_reminders_highlights"
-    },
-    {
-        id: "influencers-form",
-        title: "Influencers Exchange System",
-        image: "/images/Influencers.png",
-        demo: "https://www.migusto.com.ar/canjes/",
-        repo: "https://github.com/ramirolacci/InfluencersForm",
-        translationKey: "project_influencers_desc",
-        category: "fullstack",
-        featured: false,
-        technologies: ["bxl-react", "bxl-typescript", "bxl-php", "bx-user-voice"],
-        roleKey: "project_influencers_role",
-        highlightsKey: "project_influencers_highlights"
+        technologies: ["bxl-react", "bxl-typescript", "bxl-nodejs", "bxs-data"],
+        roleKey: "project_sagitarium_role",
+        highlightsKey: "project_sagitarium_highlights"
     },
     {
         id: "kiruki",
         title: "Kiruki Make It Happen",
-        image: "/images/project1.png",
+        image: "/images/Kiruki Make It Happen.png",
         demo: "https://kiruki-makeit.netlify.app/",
         repo: "https://github.com/ramirolacci/Kiruki-Make-It-Happen",
         translationKey: "project1_desc",
@@ -130,8 +130,8 @@ export const PROJECTS: Project[] = [
     {
         id: "bexc-gym",
         title: "Bexc 2.0 Gym",
-        image: "/images/project2.png",
-        demo: "https://bexc.netlify.app/#home",
+        image: "/images/Bexc 2.0 Gym.png",
+        demo: "https://bexcgym.netlify.app/",
         repo: "https://github.com/ramirolacci/Bexc2.0-Gym",
         translationKey: "project2_desc",
         category: "frontend",
@@ -139,15 +139,43 @@ export const PROJECTS: Project[] = [
         technologies: ["bxl-react", "bxl-bootstrap", "bxl-javascript"]
     },
     {
-        id: "rune-rental",
-        title: "Rüne Rental Car",
-        image: "/images/project3.png",
-        demo: "https://rune-rental-car.netlify.app/",
-        repo: "https://github.com/ramirolacci/Rune-Rental-Car",
-        translationKey: "project3_desc",
+        id: "typerush",
+        title: "TypeRush",
+        image: "/images/TypeRush.png",
+        demo: "https://typerush-ws.netlify.app/",
+        repo: "https://github.com/ramirolacci/TypeRush",
+        translationKey: "project_typerush_desc",
+        category: "interactive",
+        featured: false,
+        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css", "bx-joystick"],
+        roleKey: "project_typerush_role",
+        highlightsKey: "project_typerush_highlights"
+    },
+    {
+        id: "fiberfit",
+        title: "FiberFit",
+        image: "/images/FiberFit.png",
+        demo: "https://fiberfit.netlify.app/",
+        repo: "https://github.com/ramirolacci/FiberFit",
+        translationKey: "project_fiberfit_desc",
         category: "frontend",
         featured: false,
-        technologies: ["bxl-react", "bxl-typescript", "bxl-css3"]
+        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css", "bx-bolt"],
+        roleKey: "project_fiberfit_role",
+        highlightsKey: "project_fiberfit_highlights"
+    },
+    {
+        id: "rd-plast",
+        title: "RD Plast",
+        image: "/images/RD Plast.png",
+        demo: "https://rd-plast.netlify.app/login",
+        repo: "https://github.com/ramirolacci/RD.Plast",
+        translationKey: "project_rdplast_desc",
+        category: "fullstack",
+        featured: false,
+        technologies: ["bxl-react", "bxl-typescript", "bxl-nodejs", "bxs-data"],
+        roleKey: "project_rdplast_role",
+        highlightsKey: "project_rdplast_highlights"
     }
 ];
 

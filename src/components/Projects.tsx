@@ -99,12 +99,12 @@ const Projects: React.FC = () => {
                                 )}
                             </div>
                             <h2>{project.title}</h2>
+                            <p>{t(project.translationKey)}</p>
                             <div className="tech-icons">
                                 {project.technologies?.map((tech, i) => (
                                     <i key={i} className={`bx ${tech} tech-icon`}></i>
                                 ))}
                             </div>
-                            <p>{t(project.translationKey)}</p>
                             
                             <div className="btn-group">
                                 <a href={project.demo} target="_blank" rel="noreferrer" className="btn btn-sm">

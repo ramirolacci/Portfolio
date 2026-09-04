@@ -454,6 +454,30 @@ span {
     text-align: center;
 }
 
+@media (min-width: 896px) {
+    .skills {
+        padding-top: 6rem;
+    }
+    .skills .heading {
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+    }
+    .services {
+        padding-top: 6rem;
+    }
+    .services .heading {
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+    }
+    .proyects {
+        padding-top: 6rem;
+    }
+    .proyects .heading {
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+    }
+}
+
 .skills-title {
     color: var(--main-color);
     font-size: 2.4rem;

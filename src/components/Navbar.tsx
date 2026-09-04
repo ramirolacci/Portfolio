@@ -42,24 +42,66 @@ const Navbar: React.FC = () => {
     useEffect(() => {
         const handleScroll = () => {
             const sections = ['home', 'skills', 'services', 'projects', 'contact'];
-            const current = sections.find(section => {
+
+            // Check if scrolled near bottom of page -> activate contact
+            if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 120) {
+                setActiveSection('contact');
+                return;
+            }
+
+            let currentSection = 'home';
+            let minDistance = Infinity;
+
+            sections.forEach(section => {
                 const element = document.getElementById(section);
                 if (element) {
                     const rect = element.getBoundingClientRect();
-                    return rect.top >= -150 && rect.top <= 250;
+                    const distance = Math.abs(rect.top - 80);
+                    if (rect.top <= 350 && distance < minDistance) {
+                        minDistance = distance;
+                        currentSection = section;
+                    }
                 }
-                return false;
             });
-            if (current) setActiveSection(current);
+
+            setActiveSection(currentSection);
         };
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+        e.preventDefault();
+        setIsMenuOpen(false);
+        setActiveSection(id);
+
+        setTimeout(() => {
+            const targetElement = document.getElementById(id);
+            if (targetElement) {
+                try {
+                    ScrollTrigger.refresh();
+                } catch {
+                    // ignore if ScrollTrigger not ready
+                }
+                const header = headerRef.current;
+                const headerHeight = header ? header.getBoundingClientRect().height : (window.innerWidth <= 895 ? 60 : 80);
+                let offsetPosition = 0;
+                if (id !== 'home') {
+                    offsetPosition = Math.max(0, targetElement.offsetTop - Math.floor(headerHeight));
+                }
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }, 50);
+    };
+
     return (
         <header className="header" ref={headerRef}>
-            <a href="#home" className="logo">
+            <a href="#home" className="logo" onClick={(e) => handleNavClick(e, 'home')}>
                 <img src="/logo/logo_dev.png" alt="Logo" className="navbar-logo" />
                 Ramiro <span>Lacci</span>
             </a>
@@ -73,8 +115,8 @@ const Navbar: React.FC = () => {
                     aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
                     aria-expanded={isMenuOpen}
                 >
-                    <Menu className="menu-icon-inner" size={36} />
-                    <X className="x-icon-inner" size={36} />
+                    <Menu className="menu-icon-inner" size={30} />
+                    <X className="x-icon-inner" size={30} />
                 </button>
 
                 <nav className={`navbar ${isMenuOpen ? 'active' : ''}`}>
@@ -83,7 +125,7 @@ const Navbar: React.FC = () => {
                             key={item.id}
                             href={`#${item.id}`}
                             className={activeSection === item.id ? 'active' : ''}
-                            onClick={() => setIsMenuOpen(false)}
+                            onClick={(e) => handleNavClick(e, item.id)}
                         >
                             {item.label}
                         </a>

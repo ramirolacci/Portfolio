@@ -26,13 +26,25 @@ const Projects: React.FC = () => {
         { id: 'interactive', labelKey: 'filter_interactive' },
     ];
 
+    const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 991);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 991);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const filteredProjects = PROJECTS.filter(project => {
         if (activeFilter === 'all') return true;
         if (activeFilter === 'featured') return project.featured;
         return project.category === activeFilter;
     });
 
-    const visibleProjects = filteredProjects.slice(0, visibleCount);
+    const visibleProjects = isMobile
+        ? filteredProjects
+        : filteredProjects.slice(0, visibleCount);
 
     const handleFilterChange = (newFilter: FilterType) => {
         if (newFilter === activeFilter) return;

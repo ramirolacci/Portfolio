@@ -10,10 +10,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 type FilterType = 'all' | 'featured' | 'frontend' | 'fullstack' | 'interactive';
 
+const getGridColumns = (gridEl: HTMLDivElement | null): number => {
+    if (!gridEl) return 3;
+    const computed = window.getComputedStyle(gridEl).gridTemplateColumns;
+    if (!computed || computed === 'none') return 3;
+    const cols = computed.split(' ').filter(Boolean).length;
+    return cols > 0 ? cols : 3;
+};
+
 const Projects: React.FC = () => {
     const { t } = useTranslation();
     const [activeFilter, setActiveFilter] = useState<FilterType>('all');
-    const [visibleCount, setVisibleCount] = useState(8);
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [initialCount, setInitialCount] = useState(6);
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const sectionRef = useRef<HTMLDivElement>(null);
     const gridRef = useRef<HTMLDivElement>(null);
@@ -28,12 +37,33 @@ const Projects: React.FC = () => {
 
     const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 991);
 
+    // Dynamic 2-row calculation based on computed CSS grid columns
     useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 991);
+        const updateLayout = () => {
+            const mobile = window.innerWidth <= 991;
+            setIsMobile(mobile);
+            if (gridRef.current) {
+                const cols = getGridColumns(gridRef.current);
+                setInitialCount(cols * 2);
+            }
         };
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+
+        updateLayout();
+
+        const observer = new ResizeObserver(() => {
+            updateLayout();
+        });
+
+        if (gridRef.current) {
+            observer.observe(gridRef.current);
+        }
+
+        window.addEventListener('resize', updateLayout);
+
+        return () => {
+            observer.disconnect();
+            window.removeEventListener('resize', updateLayout);
+        };
     }, []);
 
     const filteredProjects = PROJECTS.filter(project => {
@@ -44,12 +74,14 @@ const Projects: React.FC = () => {
 
     const visibleProjects = isMobile
         ? filteredProjects
-        : filteredProjects.slice(0, visibleCount);
+        : isExpanded
+            ? filteredProjects
+            : filteredProjects.slice(0, initialCount);
 
     const handleFilterChange = (newFilter: FilterType) => {
         if (newFilter === activeFilter) return;
         setActiveFilter(newFilter);
-        setVisibleCount(8);
+        setIsExpanded(false);
     };
 
     // Handle ESC key for modal close
@@ -70,11 +102,7 @@ const Projects: React.FC = () => {
     }, [selectedProject]);
 
     const handleSeeMore = () => {
-        if (visibleCount >= filteredProjects.length) {
-            setVisibleCount(8);
-        } else {
-            setVisibleCount(filteredProjects.length);
-        }
+        setIsExpanded(prev => !prev);
     };
 
     return (
@@ -97,7 +125,7 @@ const Projects: React.FC = () => {
                 </div>
 
                 {/* Projects Grid */}
-                <div key={`${activeFilter}-${visibleCount}`} className="wrapper projects-grid" ref={gridRef}>
+                <div key={`${activeFilter}-${isExpanded ? 'expanded' : initialCount}`} className="wrapper projects-grid" ref={gridRef}>
                     {visibleProjects.map((project, index) => (
                         <div
                             key={project.id}
@@ -131,13 +159,13 @@ const Projects: React.FC = () => {
                 </div>
 
                 {/* See More Button */}
-                {filteredProjects.length > 8 && (
+                {!isMobile && filteredProjects.length > initialCount && (
                     <div className="ver-mas-container" style={{ textAlign: 'center', marginTop: '3rem' }}>
                         <button
                             className="btn ver-mas-btn"
                             onClick={handleSeeMore}
                         >
-                            {visibleCount >= filteredProjects.length ? t('ver-menos') : t('ver-mas')}
+                            {isExpanded ? t('ver-menos') : t('ver-mas')}
                         </button>
                     </div>
                 )}

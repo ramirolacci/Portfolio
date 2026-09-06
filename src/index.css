@@ -328,7 +328,7 @@ span {
     position: relative;
     top: 3rem;
     width: 32vw;
-    height: auto;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 0 25px var(--main-color);
@@ -1351,6 +1351,7 @@ img.db-badge {
     margin-bottom: 1rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     height: 3.9rem;
@@ -2249,6 +2250,7 @@ img.db-badge {
     .home-img img {
         width: min(58vw, 230px) !important;
         max-width: 240px !important;
+        aspect-ratio: 1 / 1 !important;
         top: 0 !important;
         margin: 0 auto !important;
     }
@@ -2649,9 +2651,15 @@ img.db-badge {
 /* ── Projects Grid & Cards ── */
 .projects-grid {
     display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+    grid-template-columns: repeat(4, 1fr) !important;
     gap: 2.5rem !important;
     width: 100%;
+}
+
+@media (max-width: 1400px) {
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
 }
 
 .project-img-container {

@@ -17,7 +17,7 @@ export const PROJECTS: Project[] = [
         title: "WaveFrame Studio",
         image: "/images/waveframe.png",
         demo: "https://waveframe.com.ar/",
-        repo: "https://github.com/ramirolacci/WaveFrame-Studio",
+        repo: "https://github.com/ramirolacci/WaveFrame-Web",
         translationKey: "project_waveframe_desc",
         category: "featured",
         featured: true,

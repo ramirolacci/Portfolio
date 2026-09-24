@@ -21,7 +21,7 @@ export const PROJECTS: Project[] = [
         translationKey: "project_waveframe_desc",
         category: "featured",
         featured: true,
-        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css", "bx-cube"],
+        technologies: ["react", "threejs", "tailwindcss"],
         roleKey: "project_waveframe_role",
         highlightsKey: "project_waveframe_highlights"
     },
@@ -34,7 +34,7 @@ export const PROJECTS: Project[] = [
         translationKey: "project5_desc",
         category: "featured",
         featured: true,
-        technologies: ["bxl-html5", "bxl-css3", "bxl-javascript", "bx-bolt"],
+        technologies: ["react", "typescript", "tailwindcss", "supabase"],
         roleKey: "project5_role",
         highlightsKey: "project5_highlights"
     },
@@ -47,7 +47,7 @@ export const PROJECTS: Project[] = [
         translationKey: "project_golden_desc",
         category: "fullstack",
         featured: true,
-        technologies: ["bxl-react", "bxl-typescript", "bxs-data"],
+        technologies: ["react", "typescript", "tailwindcss", "supabase"],
         roleKey: "project_golden_role",
         highlightsKey: "project_golden_highlights"
     },
@@ -60,7 +60,7 @@ export const PROJECTS: Project[] = [
         translationKey: "project_sagrada_desc",
         category: "frontend",
         featured: true,
-        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css", "bx-bolt"],
+        technologies: ["react", "tailwindcss", "supabase"],
         roleKey: "project_sagrada_role",
         highlightsKey: "project_sagrada_highlights"
     },
@@ -73,7 +73,7 @@ export const PROJECTS: Project[] = [
         translationKey: "project_qr_desc",
         category: "frontend",
         featured: false,
-        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css"],
+        technologies: ["react", "typescript", "tailwindcss", "supabase"],
         roleKey: "project_qr_role",
         highlightsKey: "project_qr_highlights"
     },
@@ -86,7 +86,7 @@ export const PROJECTS: Project[] = [
         translationKey: "project_photoparty_desc",
         category: "interactive",
         featured: false,
-        technologies: ["bxl-react", "bxl-typescript", "bx-camera", "bx-video"],
+        technologies: ["react", "typescript", "tailwindcss", "supabase", "camera", "video"],
         roleKey: "project_photoparty_role",
         highlightsKey: "project_photoparty_highlights"
     },
@@ -99,7 +99,7 @@ export const PROJECTS: Project[] = [
         translationKey: "project_games_desc",
         category: "interactive",
         featured: false,
-        technologies: ["bxl-react", "bxl-typescript", "bx-joystick"],
+        technologies: ["html5", "css3", "javascript", "joystick"],
         roleKey: "project_games_role",
         highlightsKey: "project_games_highlights"
     },
@@ -112,7 +112,7 @@ export const PROJECTS: Project[] = [
         translationKey: "project_sagitarium_desc",
         category: "fullstack",
         featured: false,
-        technologies: ["bxl-react", "bxl-typescript", "bxl-nodejs", "bxs-data"],
+        technologies: ["react", "postgresql", "html5", "css3"],
         roleKey: "project_sagitarium_role",
         highlightsKey: "project_sagitarium_highlights"
     },
@@ -125,7 +125,7 @@ export const PROJECTS: Project[] = [
         translationKey: "project1_desc",
         category: "frontend",
         featured: false,
-        technologies: ["bxl-html5", "bxl-css3", "bxl-javascript"]
+        technologies: ["html5", "css3", "javascript"]
     },
     {
         id: "bexc-gym",
@@ -136,7 +136,7 @@ export const PROJECTS: Project[] = [
         translationKey: "project2_desc",
         category: "frontend",
         featured: false,
-        technologies: ["bxl-react", "bxl-bootstrap", "bxl-javascript"]
+        technologies: ["react", "vanilla_css3"]
     },
     {
         id: "typerush",
@@ -147,7 +147,7 @@ export const PROJECTS: Project[] = [
         translationKey: "project_typerush_desc",
         category: "interactive",
         featured: false,
-        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css", "bx-joystick"],
+        technologies: ["react", "typescript", "tailwindcss", "joystick"],
         roleKey: "project_typerush_role",
         highlightsKey: "project_typerush_highlights"
     },
@@ -160,7 +160,7 @@ export const PROJECTS: Project[] = [
         translationKey: "project_fiberfit_desc",
         category: "frontend",
         featured: false,
-        technologies: ["bxl-react", "bxl-typescript", "bxl-tailwind-css", "bx-bolt"],
+        technologies: ["react", "typescript", "tailwindcss", "supabase"],
         roleKey: "project_fiberfit_role",
         highlightsKey: "project_fiberfit_highlights"
     },
@@ -173,7 +173,7 @@ export const PROJECTS: Project[] = [
         translationKey: "project_rdplast_desc",
         category: "fullstack",
         featured: false,
-        technologies: ["bxl-react", "bxl-typescript", "bxl-nodejs", "bxs-data"],
+        technologies: ["react", "typescript", "supabase"],
         roleKey: "project_rdplast_role",
         highlightsKey: "project_rdplast_highlights"
     }

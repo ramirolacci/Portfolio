@@ -1445,12 +1445,42 @@ img.db-badge {
     color: #00618a;
 }
 
-/* MySQL */
+/* Supabase */
 .bx-cloud {
     color: #3ECF8E;
 }
 
-/* Supabase */
+/* Vite */
+.bx-rocket {
+    color: #bd34fe;
+}
+
+/* GSAP */
+.bx-movie-play {
+    color: #88ce02;
+}
+
+/* Phaser 3 */
+.bx-ghost {
+    color: #ee3b24;
+}
+
+/* React Router */
+.bx-navigation {
+    color: #ca4245;
+}
+
+.bx-cube {
+    color: #00ffee;
+}
+
+.bx-camera {
+    color: #00ffee;
+}
+
+.bx-video {
+    color: #00ffee;
+}
 
 .contact {
     background-color: var(--bg-color);

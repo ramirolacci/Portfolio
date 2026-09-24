@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PROJECTS } from '../constants';
 import type { Project } from '../types';
 import { X, ExternalLink, Github } from 'lucide-react';
+import TechIcon, { getTechDetails } from './TechIcon';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -142,7 +143,7 @@ const Projects: React.FC = () => {
                             <p>{t(project.translationKey)}</p>
                             <div className="tech-icons">
                                 {project.technologies?.map((tech, i) => (
-                                    <i key={i} className={`bx ${tech} tech-icon`}></i>
+                                    <TechIcon key={i} tech={tech} />
                                 ))}
                             </div>
                             
@@ -200,11 +201,14 @@ const Projects: React.FC = () => {
                                 <div className="modal-meta-item">
                                     <strong>{t('project_tech_label')}</strong>
                                     <div className="modal-tech-list">
-                                        {selectedProject.technologies.map((tech, i) => (
-                                            <span key={i} className="modal-tech-chip">
-                                                <i className={`bx ${tech}`}></i> {tech.replace('bxl-', '').replace('bx-', '')}
-                                            </span>
-                                        ))}
+                                        {selectedProject.technologies.map((tech, i) => {
+                                            const details = getTechDetails(tech);
+                                            return (
+                                                <span key={i} className="modal-tech-chip">
+                                                    <TechIcon tech={tech} className="" showTooltip={false} /> {details.name}
+                                                </span>
+                                            );
+                                        })}
                                     </div>
                                 </div>
 
